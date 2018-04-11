@@ -1,4 +1,6 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using AMLLC.CORE.DATA;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Data.Common;
 
 namespace AMLLC.CORE.TEST
 {
@@ -8,6 +10,14 @@ namespace AMLLC.CORE.TEST
         [TestMethod]
         public void TestMethod1()
         {
+
+            Database database;
+            DatabaseType databaseType = DatabaseType.SqlServer;
+            database = DatabaseFactory.CreateDataBase(databaseType);
+
+            DbCommand command = database.Command;
+
+
         }
     }
 }
