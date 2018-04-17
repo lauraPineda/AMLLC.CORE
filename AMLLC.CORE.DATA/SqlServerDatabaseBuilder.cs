@@ -36,7 +36,7 @@ namespace AMLLC.CORE.DATA
             _Database.Command.CommandType = CommandType.StoredProcedure;
         }
 
-        public void AddParameters(object[] arrobjParameters)
+        public void AddParameters(params object[] arrobjParameters)
         {
             _Database.Connection.Open();
             int intIndexParam = 0;

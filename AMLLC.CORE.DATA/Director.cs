@@ -8,7 +8,7 @@ namespace AMLLC.CORE.DATA
 {
     public class Director
     {
-        public void Build(IDatabaseBuilder Builder, string sStoredProcedure, object[] arrobjParameters)
+        public void Build(IDatabaseBuilder Builder, string sStoredProcedure, params object[] arrobjParameters)
         {
             Builder.BuildConnection();
             Builder.BuildCommand(sStoredProcedure);
