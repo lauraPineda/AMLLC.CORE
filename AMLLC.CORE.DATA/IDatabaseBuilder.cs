@@ -12,7 +12,7 @@ namespace AMLLC.CORE.DATA
         void BuildConnection();
         void BuildCommand(string sStoredProcedure);
         void SetSettings();
-        void AddParameters(object[] arrobjParameters);
+        void AddParameters(params object[] arrobjParameters);
         void GetDataReader();
         //solo de lectura por lo tanto solo se implementa el get
         Database Database { get; }

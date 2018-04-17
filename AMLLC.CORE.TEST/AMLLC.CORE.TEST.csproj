@@ -59,9 +59,17 @@
     <Compile Include="UnitTest2.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\AMLLC.CORE.DATAMANAGER\AMLLC.CORE.DATAMANAGER.csproj">
+      <Project>{03CB2CFB-5471-41E3-A9F4-FF46C66F9C11}</Project>
+      <Name>AMLLC.CORE.DATAMANAGER</Name>
+    </ProjectReference>
     <ProjectReference Include="..\AMLLC.CORE.DATA\AMLLC.CORE.DATA.csproj">
       <Project>{31838dae-d5bd-4b45-8937-18eae9d0ae7f}</Project>
       <Name>AMLLC.CORE.DATA</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AMLLC.CORE.ENTITIES\AMLLC.CORE.ENTITIES.csproj">
+      <Project>{3CDB9906-F261-426A-B947-BF9DDB0F44F2}</Project>
+      <Name>AMLLC.CORE.ENTITIES</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

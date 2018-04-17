@@ -5,7 +5,7 @@ namespace AMLLC.CORE.DATA
 {
     public class DatabaseFactory
     {
-        public static Database CreateDataBase(DatabaseType databaseType,string sStoredProcedure, object[] arrobjParameters)
+        public static Database CreateDataBase(DatabaseType databaseType,string sStoredProcedure, params object[] arrobjParameters)
         {
             switch (databaseType)
             {
