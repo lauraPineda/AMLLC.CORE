@@ -9,8 +9,9 @@ namespace AMLLC.CORE.DATA
 {
     public class SQLServerDatabase : Database
     {
-        public System.Data.Common.DbConnection _Connection;
-        public System.Data.Common.DbCommand _Command;
+        private System.Data.Common.DbConnection _Connection = null;
+        private System.Data.Common.DbCommand _Command = null;
+        private System.Data.Common.DbDataReader _DataReader = null;
 
         public override System.Data.Common.DbConnection Connection
         {
@@ -36,6 +37,20 @@ namespace AMLLC.CORE.DATA
                 _Command = value;
             }
         }
+
+        public override System.Data.Common.DbDataReader DataReader
+        {
+            get
+            {
+                return _DataReader;
+            }
+            set
+            {
+                _DataReader = value;
+            }
+        }
+
+
 
     }
 }
