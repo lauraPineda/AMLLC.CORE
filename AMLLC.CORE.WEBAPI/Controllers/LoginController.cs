@@ -1,5 +1,6 @@
 ﻿using AMLLC.CORE.BUSINESS.Login;
 using AMLLC.CORE.ENTITIES;
+using AMLLC.CORE.ENTITIES.DB;
 using AMLLC.CORE.ENTITIES.Login;
 using System.Web.Http;
 
@@ -13,8 +14,8 @@ namespace AMLLC.CORE.WEBAPI.Controllers
             var response = new ResponseDTO<LoginDTO>();
             try
             {
-                var loginLogic = LoginLogic.GetInstance();
-                response = loginLogic.GetLogin(request);
+                //var loginLogic = LoginLogic.GetInstance();
+                response = new LoginLogic().GetLogin(request);
             }
             catch (System.Data.SqlClient.SqlException exception)
             {
@@ -26,7 +27,6 @@ namespace AMLLC.CORE.WEBAPI.Controllers
                 response.Success = false;
                 response.Message = exception.Message;
             }
-
             return response;
         }
     }

@@ -45,6 +45,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\AMLLC.CORE.DATAMANAGER\AMLLC.CORE.DATAMANAGER.csproj">
+      <Project>{03CB2CFB-5471-41E3-A9F4-FF46C66F9C11}</Project>
+      <Name>AMLLC.CORE.DATAMANAGER</Name>
+    </ProjectReference>
     <ProjectReference Include="..\AMLLC.CORE.ENTITIES\AMLLC.CORE.ENTITIES.csproj">
       <Project>{3cdb9906-f261-426a-b947-bf9ddb0f44f2}</Project>
       <Name>AMLLC.CORE.ENTITIES</Name>
