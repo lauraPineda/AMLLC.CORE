@@ -41,6 +41,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DB\RoleDTO.cs" />
+    <Compile Include="DB\UserDTO.cs" />
+    <Compile Include="Login\LoginDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ResponseDTO.cs" />
   </ItemGroup>
