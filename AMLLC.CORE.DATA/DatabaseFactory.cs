@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Data;
+using System.Data.Common;
 
 namespace AMLLC.CORE.DATA
 {
     public class DatabaseFactory
     {
-        public static Database CreateDataBase(DatabaseType databaseType)
+        public static Database CreateDataBase(DatabaseType databaseType,string sStoredProcedure, object[] arrobjParameters)
         {
             switch (databaseType)
             {
@@ -19,10 +16,10 @@ namespace AMLLC.CORE.DATA
 
                     builder = new SqlServerDatabaseBuilder();
 
+                    director.Build(builder, sStoredProcedure,arrobjParameters);
 
-                    director.Build(builder);
-                    Database database = builder.Database;
-                    return database;
+                    return builder.Database;
+
             }
         }
     }
