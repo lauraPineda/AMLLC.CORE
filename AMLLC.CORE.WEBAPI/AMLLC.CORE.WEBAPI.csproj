@@ -106,10 +106,17 @@
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\AMLLC.CORE.BUSINESS\AMLLC.CORE.BUSINESS.csproj">
+      <Project>{f609f4be-d993-4460-9ed5-b5070383dec8}</Project>
+      <Name>AMLLC.CORE.BUSINESS</Name>
+    </ProjectReference>
     <ProjectReference Include="..\AMLLC.CORE.ENTITIES\AMLLC.CORE.ENTITIES.csproj">
       <Project>{3cdb9906-f261-426a-b947-bf9ddb0f44f2}</Project>
       <Name>AMLLC.CORE.ENTITIES</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
