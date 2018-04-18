@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DB\InfoDTO.cs" />
     <Compile Include="DB\RoleDTO.cs" />
     <Compile Include="DB\UserDTO.cs" />
     <Compile Include="Login\LoginDTO.cs" />

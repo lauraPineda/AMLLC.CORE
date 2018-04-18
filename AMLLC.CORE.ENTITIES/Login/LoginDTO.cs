@@ -12,6 +12,8 @@ namespace AMLLC.CORE.ENTITIES.Login
         [DataMember]
         public RoleDTO Role { get; set; }
         [DataMember]
+        public InfoDTO Info { get; set; }
+        [DataMember]
         public bool IsAuthenticated { get; set; }
     }
 }
