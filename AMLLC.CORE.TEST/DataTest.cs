@@ -6,7 +6,7 @@ using System.Data.Common;
 namespace AMLLC.CORE.TEST
 {
     [TestClass]
-    public class UnitTest1
+    public class DataTest
     {
         object[] arrobjParameters;
         [TestMethod]

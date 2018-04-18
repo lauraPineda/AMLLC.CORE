@@ -7,7 +7,7 @@ using AMLLC.CORE.ENTITIES.Login;
 namespace AMLLC.CORE.TEST
 {
     [TestClass]
-    public class UnitTest2
+    public class LoginTest
     {
         [TestMethod]
         public void TestMethod1()

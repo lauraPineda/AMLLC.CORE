@@ -13,7 +13,7 @@ namespace AMLLC.CORE.DATAMANAGER
             response.Result.User = new ENTITIES.DB.UserDTO();
             Database database;
             DatabaseType databaseType = DatabaseType.SqlServer;
-            database = DatabaseFactory.CreateDataBase(databaseType, "[USER].[SP_GET_LOGIN]", request.User.UserName.ToString());
+            database = DatabaseFactory.CreateDataBase(databaseType, "[USER].[SP_GET_LOGIN]", "JORGE");//request.User.UserName.ToString());
 
             if (database.DataReader.HasRows)
             {

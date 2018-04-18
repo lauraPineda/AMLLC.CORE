@@ -54,9 +54,10 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="UnitTest1.cs" />
+    <Compile Include="DataTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UnitTest2.cs" />
+    <Compile Include="LoginTest.cs" />
+    <Compile Include="HashTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AMLLC.CORE.DATAMANAGER\AMLLC.CORE.DATAMANAGER.csproj">
@@ -70,6 +71,10 @@
     <ProjectReference Include="..\AMLLC.CORE.ENTITIES\AMLLC.CORE.ENTITIES.csproj">
       <Project>{3CDB9906-F261-426A-B947-BF9DDB0F44F2}</Project>
       <Name>AMLLC.CORE.ENTITIES</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AMLLC.CORE.SHARED\AMLLC.CORE.SHARED.csproj">
+      <Project>{819D23E2-A1A1-4078-9761-41FBC7818313}</Project>
+      <Name>AMLLC.CORE.SHARED</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
