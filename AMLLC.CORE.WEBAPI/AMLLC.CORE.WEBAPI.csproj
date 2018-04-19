@@ -114,6 +114,10 @@
       <Project>{3cdb9906-f261-426a-b947-bf9ddb0f44f2}</Project>
       <Name>AMLLC.CORE.ENTITIES</Name>
     </ProjectReference>
+    <ProjectReference Include="..\AMLLC.CORE.SHARED\AMLLC.CORE.SHARED.csproj">
+      <Project>{819D23E2-A1A1-4078-9761-41FBC7818313}</Project>
+      <Name>AMLLC.CORE.SHARED</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />

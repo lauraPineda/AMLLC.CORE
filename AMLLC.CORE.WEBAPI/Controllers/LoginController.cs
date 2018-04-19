@@ -2,6 +2,7 @@
 using AMLLC.CORE.ENTITIES;
 using AMLLC.CORE.ENTITIES.DB;
 using AMLLC.CORE.ENTITIES.Login;
+using AMLLC.CORE.SHARED;
 using System.Web.Http;
 
 namespace AMLLC.CORE.WEBAPI.Controllers
@@ -21,11 +22,13 @@ namespace AMLLC.CORE.WEBAPI.Controllers
             {
                 response.Success = false;
                 response.Message = exception.Message;
+                ExceptionHandler.Instance.WriteExceptionLog(exception);
             }
             catch (System.Exception exception)
             {
                 response.Success = false;
                 response.Message = exception.Message;
+                ExceptionHandler.Instance.WriteExceptionLog(exception);
             }
             return response;
         }
