@@ -19,7 +19,7 @@ namespace AMLLC.CORE.DATAMANAGER
             
             Database database;
             DatabaseType databaseType = DatabaseType.SqlServer;
-            database = DatabaseFactory.CreateDataBase(databaseType, "[USER].[SP_GE_INFOUSER_SUPERVISOR]", request.User.UserName.ToString());
+            database = DatabaseFactory.CreateDataBase(databaseType, "[USER].[SP_GET_INFOUSER_SUPERVISOR]", request.User.UserName.ToString());
 
             response = MapperLoginDTO(database.DataReader);
 
