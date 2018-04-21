@@ -13,6 +13,11 @@ namespace AMLLC.CORE.BUSINESS.Login
         private static LoginLogic instance;
         private static readonly object _Lock = new object();
 
+        private LoginLogic()
+        {
+            loginDataManger = new LoginDataManger();
+        }
+
         /// <summary>
         /// Obtiene una instancia de la clase LoginLogic mediante Singleton.
         /// </summary>

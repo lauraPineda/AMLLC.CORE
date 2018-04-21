@@ -17,7 +17,7 @@ namespace AMLLC.CORE.WEBAPI.Controllers
             var response = new ResponseDTO<LoginResponseDTO>();
             try
             {
-                response = LoginLogic.GetInstance.GetLogin(request);
+                response = LoginLogic.GetInstance.GetLogin(request.Signature);
             }
             catch (System.Data.SqlClient.SqlException exception)
             {
