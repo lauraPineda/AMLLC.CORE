@@ -41,7 +41,7 @@ namespace AMLLC.CORE.BUSINESS.Login
         /// Obtiene autorización de usuario.
         /// </summary>
         /// <param name="request">Credenciales de login</param>
-        /// <returns>Un objeto respuesto del tipo LoginDTO.</returns>
+        /// <returns>Un objeto respuesto del tipo LoginResponseDTO.</returns>
         public ResponseDTO<LoginResponseDTO> GetLogin(UserDTO request)
         {
             ResponseDTO<LoginResponseDTO> response=loginDataManger.LoginSupervisor(request);

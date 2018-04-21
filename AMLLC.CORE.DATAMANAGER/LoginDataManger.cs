@@ -15,14 +15,12 @@ namespace AMLLC.CORE.DATAMANAGER
         /// <param name="request"></param>
         /// <returns></returns>
         public ResponseDTO<LoginResponseDTO> LoginSupervisor(UserDTO request)
-        {
-            ResponseDTO<LoginResponseDTO> response = new ResponseDTO<LoginResponseDTO>();
-            
+        {  
             Database database;
             DatabaseType databaseType = DatabaseType.SqlServer;
             database = DatabaseFactory.CreateDataBase(databaseType, "[USER].[USP_GET_INFOUSER_SUPERVISOR]", request.UserName.ToString());
 
-            response = MapperLoginDTO(database.DataReader);
+            ResponseDTO<LoginResponseDTO> response = MapperLoginDTO(database.DataReader);
 
             database.Connection.Close();
             
