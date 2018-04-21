@@ -8,7 +8,7 @@ namespace AMLLC.CORE.ENTITIES
         [DataMember]
         public int IdWebSite { get; set; }
         [DataMember]
-        public string Password { get; set; }
+        public string Token { get; set; }
         [DataMember]
         public T Signature { get; set; }
     }
