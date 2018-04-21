@@ -1,5 +1,6 @@
 ﻿using AMLLC.CORE.DATA;
 using AMLLC.CORE.ENTITIES;
+using AMLLC.CORE.ENTITIES.DB;
 using AMLLC.CORE.ENTITIES.Login;
 using System;
 using System.Data.Common;
@@ -13,13 +14,13 @@ namespace AMLLC.CORE.DATAMANAGER
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
-        public ResponseDTO<LoginDTO> LoginSupervisor(ENTITIES.Login.LoginDTO request)
+        public ResponseDTO<LoginResponseDTO> LoginSupervisor(UserDTO request)
         {
-            ResponseDTO<LoginDTO> response = new ResponseDTO<ENTITIES.Login.LoginDTO>();
+            ResponseDTO<LoginResponseDTO> response = new ResponseDTO<LoginResponseDTO>();
             
             Database database;
             DatabaseType databaseType = DatabaseType.SqlServer;
-            database = DatabaseFactory.CreateDataBase(databaseType, "[USER].[SP_GET_INFOUSER_SUPERVISOR]", request.User.UserName.ToString());
+            database = DatabaseFactory.CreateDataBase(databaseType, "[USER].[USP_GET_INFOUSER_SUPERVISOR]", request.UserName.ToString());
 
             response = MapperLoginDTO(database.DataReader);
 
@@ -33,13 +34,12 @@ namespace AMLLC.CORE.DATAMANAGER
         /// </summary>
         /// <param name="DbDataReader">Datos obtenidos de la consulta a base de datos</param>
         /// <returns>Objeto mapeado con la información obtenida del usuario </returns>
-        private ResponseDTO<LoginDTO> MapperLoginDTO(DbDataReader DbDataReader)
+        private ResponseDTO<LoginResponseDTO> MapperLoginDTO(DbDataReader DbDataReader)
         {
-            ResponseDTO<LoginDTO> response = new ResponseDTO<LoginDTO>();
-            response.Result = new LoginDTO();
-            response.Result.User = new ENTITIES.DB.UserDTO();
-            response.Result.Info = new ENTITIES.DB.InfoDTO();
-            response.Result.Role = new ENTITIES.DB.RoleDTO();
+            ResponseDTO<LoginResponseDTO> response = new ResponseDTO<LoginResponseDTO>();
+            response.Result = new LoginResponseDTO();
+            response.Result.User = new UserDTO();
+            response.Result.Role = new RoleDTO();
             response.Success = true;
 
             if (DbDataReader.HasRows)
@@ -49,9 +49,6 @@ namespace AMLLC.CORE.DATAMANAGER
                     response.Result.User.IdUser = Convert.ToUInt32(DbDataReader["IdUser"]);
                     response.Result.User.UserName = Convert.ToString(DbDataReader["UserName"]);
                     response.Result.User.Password = Convert.ToString(DbDataReader["Password"]);
-
-                    response.Result.Info.Name = Convert.ToString(DbDataReader["Name"]);
-                    response.Result.Info.LastName = Convert.ToString(DbDataReader["LastName"]);
 
                     response.Result.Role.IdRole = (ushort)Convert.ToInt16(DbDataReader["IdRole"]);
                     response.Result.Role.Name = Convert.ToString(DbDataReader["Rol"]);

@@ -1,7 +1,4 @@
-﻿using System.Data;
-using System.Data.Common;
-
-namespace AMLLC.CORE.DATA
+﻿namespace AMLLC.CORE.DATA
 {
     public class DatabaseFactory
     {

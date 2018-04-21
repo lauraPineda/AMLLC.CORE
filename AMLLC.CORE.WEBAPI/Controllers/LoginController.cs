@@ -7,12 +7,14 @@ using System.Web.Http;
 
 namespace AMLLC.CORE.WEBAPI.Controllers
 {
+    [RoutePrefix("Supervisor/Login")]
     public class LoginController : ApiController
     {
         [HttpPost]
-        public ResponseDTO<LoginDTO>GetLogin(LoginDTO request)
+        [Route("Get")]
+        public ResponseDTO<LoginResponseDTO>GetLogin(RequestDTO<UserDTO> request)
         {
-            var response = new ResponseDTO<LoginDTO>();
+            var response = new ResponseDTO<LoginResponseDTO>();
             try
             {
                 response = LoginLogic.GetInstance.GetLogin(request);

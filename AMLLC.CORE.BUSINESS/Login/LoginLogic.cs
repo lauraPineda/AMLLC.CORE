@@ -1,6 +1,7 @@
 ﻿
 using AMLLC.CORE.DATAMANAGER;
 using AMLLC.CORE.ENTITIES;
+using AMLLC.CORE.ENTITIES.DB;
 using AMLLC.CORE.ENTITIES.Login;
 using AMLLC.CORE.SHARED;
 
@@ -8,6 +9,7 @@ namespace AMLLC.CORE.BUSINESS.Login
 {
     public class LoginLogic
     {
+        LoginDataManger loginDataManger;
         private static LoginLogic instance;
         private static readonly object _Lock = new object();
 
@@ -35,14 +37,13 @@ namespace AMLLC.CORE.BUSINESS.Login
         /// </summary>
         /// <param name="request">Credenciales de login</param>
         /// <returns>Un objeto respuesto del tipo LoginDTO.</returns>
-        public ResponseDTO<LoginDTO> GetLogin(LoginDTO request)
+        public ResponseDTO<LoginResponseDTO> GetLogin(UserDTO request)
         {
-            LoginDataManger loginDataManger = new LoginDataManger();
-            ResponseDTO<LoginDTO> response=loginDataManger.LoginSupervisor(request);
+            ResponseDTO<LoginResponseDTO> response=loginDataManger.LoginSupervisor(request);
 
             //Valida que la contraseña sea correcta
-            response.Result.IsAuthenticated=HashEncryption.VerifyHashPassword(response.Result.User.Password,request.User.Password);
-
+            response.Result.IsAuthenticated=HashEncryption.VerifyHashPassword(response.Result.User.Password,request.Password);
+            response.Result.User.Password = string.Empty;
             return response;
         }
     }
