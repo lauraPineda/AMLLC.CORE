@@ -1,7 +1,5 @@
 ﻿using AMLLC.CORE.DATA;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Data;
-using System.Data.Common;
 
 namespace AMLLC.CORE.TEST
 {

@@ -47,6 +47,7 @@
     <Compile Include="DB\UserDTO.cs" />
     <Compile Include="Login\LoginDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RequestDTO.cs" />
     <Compile Include="ResponseDTO.cs" />
   </ItemGroup>
   <ItemGroup>
