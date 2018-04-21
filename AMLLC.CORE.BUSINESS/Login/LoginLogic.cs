@@ -9,26 +9,25 @@ namespace AMLLC.CORE.BUSINESS.Login
     public class LoginLogic
     {
         private static LoginLogic instance;
-
-        /// <summary>
-        /// Constructor privado para ser usado mediante singleton
-        /// </summary>
-        //public LoginLogic()
-        //{
-        //    instance = new LoginLogic();
-        //}
+        private static readonly object _Lock = new object();
 
         /// <summary>
         /// Obtiene una instancia de la clase LoginLogic mediante Singleton.
         /// </summary>
         /// <returns>Retorna una instancia del tipo LoginLogic.</returns>
-        public static LoginLogic GetInstance()
+        public static LoginLogic GetInstance
         {
-            if (Equals(instance, null))
+            get
             {
-                instance = new LoginLogic();
+                lock (_Lock)
+                {
+                    if (Equals(instance, null))
+                    {
+                        instance = new LoginLogic();
+                    }
+                }
+                return instance;
             }
-            return instance;
         }
 
         /// <summary>

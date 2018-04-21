@@ -15,8 +15,7 @@ namespace AMLLC.CORE.WEBAPI.Controllers
             var response = new ResponseDTO<LoginDTO>();
             try
             {
-                //var loginLogic = LoginLogic.GetInstance();
-                response = new LoginLogic().GetLogin(request);
+                response = LoginLogic.GetInstance.GetLogin(request);
             }
             catch (System.Data.SqlClient.SqlException exception)
             {
