@@ -46,9 +46,12 @@ namespace AMLLC.CORE.BUSINESS.Login
         {
             ResponseDTO<LoginResponseDTO> response=loginDataManger.LoginSupervisor(request);
 
-            //Valida que la contraseña sea correcta
-            response.Result.IsAuthenticated=HashEncryption.VerifyHashPassword(response.Result.User.Password,request.Password);
-            response.Result.User.Password = string.Empty;
+            //Valida que la contraseña sea correcta si se obtuvo al usuario correctamente
+            if (response.Success)
+            {
+                response.Result.IsAuthenticated = HashEncryption.VerifyHashPassword(response.Result.User.Password, request.Password);
+                response.Result.User.Password = string.Empty;
+            }
             return response;
         }
     }
