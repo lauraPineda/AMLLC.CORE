@@ -26,14 +26,31 @@ namespace AMLLC.CORE.DATAMANAGER
                                                                                             request.Info.Telephone,
                                                                                             request.Info.HasTelephone);
 
-            ResponseDTO<UserDTO> response = MapperLoginDTO(database.DataReader);
+            ResponseDTO<UserDTO> response = MapperUserDTO(database.DataReader);
 
             database.Connection.Close();
 
             return response;
         }
 
-        private ResponseDTO<UserDTO> MapperLoginDTO(DbDataReader DbDataReader)
+        public ResponseDTO<object> AddUserLocation(UserLocationRolDTO request)
+        {
+            Database database;
+            DatabaseType databaseType = DatabaseType.SqlServer;
+            database = DatabaseFactory.CreateDataBase(databaseType, "[USER].[USP_ADD_USERLOCATION]", request.IdRole,
+                                                                                                    request.IdLocation,
+                                                                                                    request.IdUser,
+                                                                                                    request.IdUserSupervisor);
+
+            ResponseDTO<object> response = new ResponseDTO<object>();
+            response.Success = true;
+
+            database.Connection.Close();
+
+            return response;
+        }
+
+        private ResponseDTO<UserDTO> MapperUserDTO(DbDataReader DbDataReader)
         {
             ResponseDTO<UserDTO> response = new ResponseDTO<UserDTO>();
             response.Result = new UserDTO();
@@ -53,5 +70,6 @@ namespace AMLLC.CORE.DATAMANAGER
             }
             return response;
         }
+
     }
 }

@@ -55,7 +55,7 @@ namespace AMLLC.CORE.DATAMANAGER
             else
             {
                 response.Success = false;
-                response.Message = "Username or Password is incorrect.";
+                response.Message = "Username or Password incorrect.";
 
             }
             return response;

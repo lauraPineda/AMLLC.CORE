@@ -1,4 +1,5 @@
-﻿using AMLLC.CORE.BUSINESS.User;
+﻿ 
+using AMLLC.CORE.BUSINESS.User;
 using AMLLC.CORE.ENTITIES;
 using AMLLC.CORE.ENTITIES.DB;
 using AMLLC.CORE.ENTITIES.User;
@@ -34,5 +35,31 @@ namespace AMLLC.CORE.WEBAPI.Controllers
             }
             return response;
         }
+
+        [HttpPost]
+        [Route("AddUserLocation")]
+        public ResponseDTO<object> AddUserLocation(RequestDTO<UserLocationRolDTO> request)
+        {
+            var response = new ResponseDTO<object>();
+            try
+            {
+                response = AddUserLocationLogic.GetInstance.AddUserLocation(request.Signature);
+            }
+            catch (System.Data.SqlClient.SqlException exception)
+            {
+                response.Success = false;
+                response.Message = exception.Message;
+                ExceptionHandler.Instance.WriteExceptionLog(exception);
+            }
+            catch (System.Exception exception)
+            {
+                response.Success = false;
+                response.Message = exception.Message;
+                ExceptionHandler.Instance.WriteExceptionLog(exception);
+            }
+            return response;
+        }
     }
+
+
 }
