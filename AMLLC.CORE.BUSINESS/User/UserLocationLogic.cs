@@ -4,13 +4,13 @@ using AMLLC.CORE.ENTITIES.DB;
 
 namespace AMLLC.CORE.BUSINESS.User
 {
-    public class AddUserLocationLogic
+    public class UserLocationLogic
     {
         UserDataManager userDataManager;
-        private static AddUserLocationLogic instance;
+        private static UserLocationLogic instance;
         private static readonly object _Lock = new object();
 
-        private AddUserLocationLogic()
+        private UserLocationLogic()
         {
             userDataManager = new UserDataManager();
         }
@@ -19,7 +19,7 @@ namespace AMLLC.CORE.BUSINESS.User
         /// Obtiene una instancia de la clase AddUser mediante Singleton.
         /// </summary>
         /// <returns>Regresa una instancia del tipo AddUser.</returns>
-        public static AddUserLocationLogic GetInstance
+        public static UserLocationLogic GetInstance
         {
             get
             {
@@ -27,7 +27,7 @@ namespace AMLLC.CORE.BUSINESS.User
                 {
                     if (Equals(instance, null))
                     {
-                        instance = new AddUserLocationLogic();
+                        instance = new UserLocationLogic();
                     }
                 }
                 return instance;
@@ -38,11 +38,17 @@ namespace AMLLC.CORE.BUSINESS.User
         /// </summary>
         /// <param name="request"></param>
         /// <returns>Regresa ibjeto de tipo UserDTO</returns>
-        public ResponseDTO<object> AddUserLocation(UserLocationRolDTO request)
+        public ResponseDTO<int> AddUserLocation(UserLocationRolDTO request)
         {
 
-            ResponseDTO<object> response= userDataManager.AddUserLocation(request);
+            ResponseDTO<int> response= userDataManager.AddUserLocation(request);
 
+            if (response.Result > 0)
+                response.Success = true;
+            else {
+                response.Success = false;
+                response.Message = "Something went wrong when trying to add the location to the user.";
+            }
             return response;
         }
     }

@@ -52,6 +52,12 @@ namespace AMLLC.CORE.BUSINESS.Login
                 response.Result.IsAuthenticated = HashEncryption.VerifyHashPassword(response.Result.User.Password, request.Password);
                 response.Result.User.Password = string.Empty;
             }
+            if (!response.Result.IsAuthenticated)
+            {
+                response.Result = null;
+                response.Success = false;
+                response.Message = "Username or Password incorrect.";
+            }
             return response;
         }
     }

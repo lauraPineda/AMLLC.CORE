@@ -6,13 +6,13 @@ using AMLLC.CORE.SHARED;
 
 namespace AMLLC.CORE.BUSINESS.User
 {
-    public class AddUserLogic
+    public class UserLogic
     {
         UserDataManager userDataManager;
-        private static AddUserLogic instance;
+        private static UserLogic instance;
         private static readonly object _Lock = new object();
 
-        private AddUserLogic()
+        private UserLogic()
         {
             userDataManager = new UserDataManager();
         }
@@ -21,7 +21,7 @@ namespace AMLLC.CORE.BUSINESS.User
         /// Obtiene una instancia de la clase AddUser mediante Singleton.
         /// </summary>
         /// <returns>Regresa una instancia del tipo AddUser.</returns>
-        public static AddUserLogic GetInstance
+        public static UserLogic GetInstance
         {
             get
             {
@@ -29,7 +29,7 @@ namespace AMLLC.CORE.BUSINESS.User
                 {
                     if (Equals(instance, null))
                     {
-                        instance = new AddUserLogic();
+                        instance = new UserLogic();
                     }
                 }
                 return instance;

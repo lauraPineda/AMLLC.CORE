@@ -41,10 +41,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CatalogLogic.cs" />
+    <Compile Include="Company\CompanyLogic.cs" />
     <Compile Include="Login\LoginLogic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="User\AddUserLocationLogic.cs" />
-    <Compile Include="User\AddUserLogic.cs" />
+    <Compile Include="User\UserLocationLogic.cs" />
+    <Compile Include="User\UserLogic.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AMLLC.CORE.DATAMANAGER\AMLLC.CORE.DATAMANAGER.csproj">

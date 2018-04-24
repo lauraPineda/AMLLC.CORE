@@ -28,12 +28,13 @@ namespace AMLLC.CORE.DATAMANAGER
 
             ResponseDTO<UserDTO> response = MapperUserDTO(database.DataReader);
 
+
             database.Connection.Close();
 
             return response;
         }
 
-        public ResponseDTO<object> AddUserLocation(UserLocationRolDTO request)
+        public ResponseDTO<int> AddUserLocation(UserLocationRolDTO request)
         {
             Database database;
             DatabaseType databaseType = DatabaseType.SqlServer;
@@ -41,8 +42,11 @@ namespace AMLLC.CORE.DATAMANAGER
                                                                                                     request.IdLocation,
                                                                                                     request.IdUser,
                                                                                                     request.IdUserSupervisor);
+            int da = database.DataReader.RecordsAffected;
 
-            ResponseDTO<object> response = new ResponseDTO<object>();
+            ResponseDTO<int> response = new ResponseDTO<int>();
+            response.Result = da;
+
             response.Success = true;
 
             database.Connection.Close();

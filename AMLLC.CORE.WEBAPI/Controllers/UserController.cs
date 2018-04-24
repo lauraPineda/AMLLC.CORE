@@ -19,7 +19,7 @@ namespace AMLLC.CORE.WEBAPI.Controllers
             var response = new ResponseDTO<UserDTO>();
             try
             {
-                response = AddUserLogic.GetInstance.AddUser(request.Signature);
+                response = UserLogic.GetInstance.AddUser(request.Signature);
             }
             catch (System.Data.SqlClient.SqlException exception)
             {
@@ -38,12 +38,12 @@ namespace AMLLC.CORE.WEBAPI.Controllers
 
         [HttpPost]
         [Route("AddUserLocation")]
-        public ResponseDTO<object> AddUserLocation(RequestDTO<UserLocationRolDTO> request)
+        public ResponseDTO<int> AddUserLocation(RequestDTO<UserLocationRolDTO> request)
         {
-            var response = new ResponseDTO<object>();
+            var response = new ResponseDTO<int>();
             try
             {
-                response = AddUserLocationLogic.GetInstance.AddUserLocation(request.Signature);
+                response = UserLocationLogic.GetInstance.AddUserLocation(request.Signature);
             }
             catch (System.Data.SqlClient.SqlException exception)
             {

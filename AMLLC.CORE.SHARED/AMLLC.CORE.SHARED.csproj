@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CatalogEnum.cs" />
     <Compile Include="ExceptionHandler.cs" />
     <Compile Include="HashEncryption.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
