@@ -1,24 +1,27 @@
-﻿using AMLLC.CORE.BUSINESS;
-using AMLLC.CORE.BUSINESS.Company;
+﻿using AMLLC.CORE.BUSINESS.Client;
 using AMLLC.CORE.ENTITIES;
 using AMLLC.CORE.ENTITIES.Catalog;
 using AMLLC.CORE.SHARED;
+using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
 using System.Web.Http;
 
 namespace AMLLC.CORE.WEBAPI.Controllers
 {
-    [RoutePrefix("Supervisor/Company")]
-    public class CompanyController : ApiController
+    [RoutePrefix("Supervisor/Client")]
+    public class ClientController : ApiController
     {
         [HttpPost]
-        [Route("GetClients")]
-        public ResponseDTO<List<ResponseCatalogDTO>> ListCompanyClients(RequestDTO<RequestCompanyClientsDTO> request)
+        [Route("GetProjects")]
+        public ResponseDTO<List<ResponseCatalogDTO>> ListCompanyClients(RequestDTO<RequestClientProjectDTO> request)
         {
             var response = new ResponseDTO<List<ResponseCatalogDTO>>();
             try
             {
-                CompanyLogic CompanyLogic = new CompanyLogic();
+                ClientLogic CompanyLogic = new ClientLogic();
                 response = CompanyLogic.GetListCatalog(request.Signature);
             }
             catch (System.Data.SqlClient.SqlException exception)

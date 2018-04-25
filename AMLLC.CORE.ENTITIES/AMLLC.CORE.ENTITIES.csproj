@@ -43,7 +43,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ResponseCatalogDTO.cs" />
+    <Compile Include="Catalog\RequestClientProjectDTO.cs" />
+    <Compile Include="Catalog\RequestCompanyClientsDTO.cs" />
+    <Compile Include="Catalog\ResponseCatalogDTO.cs" />
     <Compile Include="DB\InfoDTO.cs" />
     <Compile Include="DB\LocationDTO.cs" />
     <Compile Include="DB\ProjectDTO.cs" />
@@ -52,7 +54,7 @@
     <Compile Include="DB\UserLocationRolDTO.cs" />
     <Compile Include="Login\LoginResponseDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RequestCatalogDTO.cs" />
+    <Compile Include="Catalog\RequestCatalogDTO.cs" />
     <Compile Include="RequestDTO.cs" />
     <Compile Include="ResponseDTO.cs" />
     <Compile Include="User\AddUserResponseDTO.cs" />

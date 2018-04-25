@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CatalogLogic.cs" />
+    <Compile Include="Client\ClientLogic.cs" />
     <Compile Include="Company\CompanyLogic.cs" />
     <Compile Include="Login\LoginLogic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
