@@ -2,6 +2,7 @@
 using AMLLC.CORE.ENTITIES;
 using AMLLC.CORE.ENTITIES.DB;
 using AMLLC.CORE.ENTITIES.Login;
+using AMLLC.CORE.SHARED;
 using System;
 using System.Data.Common;
 
@@ -9,6 +10,7 @@ namespace AMLLC.CORE.DATAMANAGER
 {
    public class LoginDataManger
     {
+
         /// <summary>
         /// Obtiene contraseña del usuario solicitado
         /// </summary>
@@ -44,12 +46,12 @@ namespace AMLLC.CORE.DATAMANAGER
             {
                 while (DbDataReader.Read())
                 {
-                    response.Result.User.IdUser = Convert.ToUInt32(DbDataReader["IdUser"]);
-                    response.Result.User.UserName = Convert.ToString(DbDataReader["UserName"]);
-                    response.Result.User.Password = Convert.ToString(DbDataReader["Password"]);
+                    response.Result.User.IdUser = Helper.GetUInt32(DbDataReader, "IdUser");
+                    response.Result.User.UserName = Helper.GetString(DbDataReader, "UserName");
+                    response.Result.User.Password = Helper.GetString(DbDataReader,"Password");
 
-                    response.Result.Role.IdRole = (ushort)Convert.ToInt16(DbDataReader["IdRole"]);
-                    response.Result.Role.Name = Convert.ToString(DbDataReader["Rol"]);
+                    response.Result.Role.IdRole =Helper.GetUInt16(DbDataReader,"IdRole");
+                    response.Result.Role.Name = Helper.GetString(DbDataReader, "Rol");
                 }
             }
             else

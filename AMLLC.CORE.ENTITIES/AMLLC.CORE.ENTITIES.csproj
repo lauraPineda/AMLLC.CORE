@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="Catalog\RequestClientProjectDTO.cs" />
     <Compile Include="Catalog\RequestCompanyClientsDTO.cs" />
+    <Compile Include="Catalog\RequestProjectLocationsDTO.cs" />
     <Compile Include="Catalog\ResponseCatalogDTO.cs" />
     <Compile Include="DB\InfoDTO.cs" />
     <Compile Include="DB\LocationDTO.cs" />

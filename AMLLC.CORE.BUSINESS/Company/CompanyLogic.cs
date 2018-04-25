@@ -11,20 +11,7 @@ namespace AMLLC.CORE.BUSINESS.Company
 {
     public class CompanyLogic
     {
-        CompanyDataManager CompanyDataManager;
 
-
-        public CompanyLogic()
-        {
-            CompanyDataManager = new CompanyDataManager();
-        }
-
-        public ResponseDTO<List<ResponseCatalogDTO>> GetListCatalog(RequestCompanyClientsDTO request)
-        {
-            ResponseDTO<List<ResponseCatalogDTO>> response = CompanyDataManager.GetListCompanyClients(request);
-
-            return response;
-        }
 
     }
 }

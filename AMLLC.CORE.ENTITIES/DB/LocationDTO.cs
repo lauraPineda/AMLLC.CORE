@@ -1,4 +1,5 @@
 ﻿using Microsoft.SqlServer.Types;
+using System;
 using System.Runtime.Serialization;
 
 namespace AMLLC.CORE.ENTITIES.DB
@@ -13,11 +14,13 @@ namespace AMLLC.CORE.ENTITIES.DB
         [DataMember]
         public string Description { get; set; }
         [DataMember]
-        public float Longitude { get; set; }
+        public Double Longitude { get; set; }
         [DataMember]
-        public float Latitude { get; set; }
+        public Double Latitude { get; set; }
         [DataMember]
         public SqlGeography GeoSpacial { get; set; }
+        [DataMember]
+        public Boolean Enabled { get; set; }
 
     }
 }

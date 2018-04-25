@@ -11,20 +11,6 @@ namespace AMLLC.CORE.BUSINESS.Client
 {
     public class ClientLogic
     {
-
-        ProjectDataManager projectDataManager;
-
-
-        public ClientLogic()
-        {
-            projectDataManager = new ProjectDataManager();
-        }
-
-        public ResponseDTO<List<ResponseCatalogDTO>> GetListCatalog(RequestClientProjectDTO request)
-        {
-            ResponseDTO<List<ResponseCatalogDTO>> response = projectDataManager.GetListClientProjects(request);
-
-            return response;
-        }
+       
     }
 }

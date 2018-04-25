@@ -1,5 +1,7 @@
 ﻿using AMLLC.CORE.DATAMANAGER;
 using AMLLC.CORE.ENTITIES;
+using AMLLC.CORE.ENTITIES.Catalog;
+using AMLLC.CORE.ENTITIES.DB;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,5 +36,27 @@ namespace AMLLC.CORE.BUSINESS
 
             return response;
         }
+
+        public ResponseDTO<List<ResponseCatalogDTO>> GetListCompanyClients(RequestCompanyClientsDTO request)
+        {
+            ResponseDTO<List<ResponseCatalogDTO>> response = catalogDataManager.GetListCompanyClients(request);
+
+            return response;
+        }
+
+        public ResponseDTO<List<ProjectDTO>> GetClientProjects(RequestClientProjectDTO request)
+        {
+            ResponseDTO<List<ProjectDTO>> response = catalogDataManager.GetListClientProjects(request);
+
+            return response;
+        }
+        public ResponseDTO<List<LocationDTO>> GetProjectsLocations(RequestProjectLocationsDTO request)
+        {
+            ResponseDTO<List<LocationDTO>> response = catalogDataManager.GetListProjectLocations(request);
+
+            return response;
+        }
+
+
     }
 }

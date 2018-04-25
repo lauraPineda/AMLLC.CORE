@@ -15,8 +15,10 @@ namespace AMLLC.CORE.ENTITIES.DB
         [DataMember]
         public string Description { get; set; }
         [DataMember]
-        public DateTime StartDate { get; set; }
+        public DateTime? StartDate { get; set; }
         [DataMember]
-        public DateTime EndDate { get; set; }
+        public DateTime? EndDate { get; set; }
+        [DataMember]
+        public Boolean Enabled { get; set; }
     }
 }
