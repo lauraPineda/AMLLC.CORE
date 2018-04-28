@@ -30,6 +30,9 @@ namespace AMLLC.CORE.BUSINESS
                 case Catalogs.Company:
                     uspCatalog = "[CLIENT].[USP_GET_COMPANIES]";
                     break;
+                case Catalogs.Roles:
+                    uspCatalog = "[USER].[USP_GET_ROLES]";
+                    break;
             }
 
             response = catalogDataManager.GetListCatalog(request, uspCatalog);
@@ -53,6 +56,13 @@ namespace AMLLC.CORE.BUSINESS
         public ResponseDTO<List<LocationDTO>> GetProjectsLocations(RequestProjectLocationsDTO request)
         {
             ResponseDTO<List<LocationDTO>> response = catalogDataManager.GetListProjectLocations(request);
+
+            return response;
+        }
+
+        public ResponseDTO<List<InfoDTO>> GetLocationSupervisors(RequestLocationSupervisorsDTO request)
+        {
+            ResponseDTO<List<InfoDTO>> response = catalogDataManager.GetListLocationSupervisors(request);
 
             return response;
         }

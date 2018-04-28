@@ -10,7 +10,8 @@ namespace AMLLC.CORE.SHARED
     {
         public enum Catalogs
         {
-            Company
+            Company,
+            Roles
         }
     }
 }

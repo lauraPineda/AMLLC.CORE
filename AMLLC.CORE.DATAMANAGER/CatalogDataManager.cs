@@ -70,6 +70,17 @@ namespace AMLLC.CORE.DATAMANAGER
             return response;
         }
 
+        public ResponseDTO<List<InfoDTO>> GetListLocationSupervisors(RequestLocationSupervisorsDTO request)
+        {
+            database = DatabaseFactory.CreateDataBase(databaseType, "[CLIENT].[USP_GET_LOCATIONSUPERVISORS]",request.IdLocation,request.IdSupervisedRol);
+
+            ResponseDTO<List<InfoDTO>> response = mapperListCatalogDTO.MapperLocationSupervisor(database.DataReader);
+
+            database.Connection.Close();
+
+            return response;
+        }
+
 
     }
 }

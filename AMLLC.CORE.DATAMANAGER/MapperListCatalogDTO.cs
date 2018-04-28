@@ -85,5 +85,27 @@ namespace AMLLC.CORE.DATAMANAGER
             }
             return response;
         }
+
+        public ResponseDTO<List<InfoDTO>> MapperLocationSupervisor(DbDataReader DbDataReader)
+        {
+            ResponseDTO<List<InfoDTO>> response = new ResponseDTO<List<InfoDTO>>();
+            response.Result = new List<InfoDTO>();
+            response.Success = true;
+
+            if (DbDataReader.HasRows)
+            {
+                while (DbDataReader.Read())
+                {
+                    response.Result.Add(new InfoDTO
+                    {
+                        IdUser = Helper.GetUInt32(DbDataReader, "Id"),
+                        Name = Helper.GetString(DbDataReader, "Name"),
+                        LastName = Helper.GetString(DbDataReader, "LastName"),
+                    });
+                }
+
+            }
+            return response;
+        }
     }
 }

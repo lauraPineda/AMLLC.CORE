@@ -46,6 +46,32 @@ namespace AMLLC.CORE.WEBAPI.Controllers
         }
 
         [HttpPost]
+        [Route("GetRoles")]
+        public ResponseDTO<List<ResponseCatalogDTO>> ListRoles(RequestDTO<RequestCatalogDTO> request)
+        {
+            var response = new ResponseDTO<List<ResponseCatalogDTO>>();
+            try
+            {
+                catalogLogic = new CatalogLogic();
+                response = catalogLogic.GetListCatalog(request.Signature, CatalogEnum.Catalogs.Roles);
+            }
+            catch (System.Data.SqlClient.SqlException exception)
+            {
+                response.Success = false;
+                response.Message = exception.Message;
+                ExceptionHandler.Instance.WriteExceptionLog(exception);
+            }
+            catch (System.Exception exception)
+            {
+                response.Success = false;
+                response.Message = exception.Message;
+                ExceptionHandler.Instance.WriteExceptionLog(exception);
+            }
+
+            return response;
+        }
+
+        [HttpPost]
         [Route("GetCompanyClients")]
         public ResponseDTO<List<ResponseCatalogDTO>> ListCompanyClients(RequestDTO<RequestCompanyClientsDTO> request)
         {
@@ -107,6 +133,34 @@ namespace AMLLC.CORE.WEBAPI.Controllers
             {
                 catalogLogic = new CatalogLogic();
                 response = catalogLogic.GetProjectsLocations(request.Signature);
+            }
+            catch (System.Data.SqlClient.SqlException exception)
+            {
+                response.Success = false;
+                response.Message = exception.Message;
+                ExceptionHandler.Instance.WriteExceptionLog(exception);
+            }
+            catch (System.Exception exception)
+            {
+                response.Success = false;
+                response.Message = exception.Message;
+                ExceptionHandler.Instance.WriteExceptionLog(exception);
+            }
+
+            return response;
+
+
+        }
+
+        [HttpPost]
+        [Route("GetLocationSupervisors")]
+        public ResponseDTO<List<InfoDTO>> ListLocationSupervisors(RequestDTO<RequestLocationSupervisorsDTO> request)
+        {
+            var response = new ResponseDTO<List<InfoDTO>>();
+            try
+            {
+                catalogLogic = new CatalogLogic();
+                response = catalogLogic.GetLocationSupervisors(request.Signature);
             }
             catch (System.Data.SqlClient.SqlException exception)
             {
