@@ -68,5 +68,13 @@ namespace AMLLC.CORE.BUSINESS
         }
 
 
+        public ResponseDTO<List<InfoDTO>> GetSupervisorWorkers(UserDTO request)
+        {
+            ResponseDTO<List<InfoDTO>> response = catalogDataManager.GetListSupervisorsWorkers(request);
+
+            return response;
+        }
+
+
     }
 }

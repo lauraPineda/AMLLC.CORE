@@ -179,5 +179,33 @@ namespace AMLLC.CORE.WEBAPI.Controllers
 
 
         }
+
+        [HttpPost]
+        [Route("GetSupervisorWorkers")]
+        public ResponseDTO<List<InfoDTO>> ListLocationSupervisors(RequestDTO<UserDTO> request)
+        {
+            var response = new ResponseDTO<List<InfoDTO>>();
+            try
+            {
+                catalogLogic = new CatalogLogic();
+                response = catalogLogic.GetSupervisorWorkers(request.Signature);
+            }
+            catch (System.Data.SqlClient.SqlException exception)
+            {
+                response.Success = false;
+                response.Message = exception.Message;
+                ExceptionHandler.Instance.WriteExceptionLog(exception);
+            }
+            catch (System.Exception exception)
+            {
+                response.Success = false;
+                response.Message = exception.Message;
+                ExceptionHandler.Instance.WriteExceptionLog(exception);
+            }
+
+            return response;
+
+
+        }
     }
 }

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace AMLLC.CORE.ENTITIES.User
 {
     [DataContract]
-    public class AddUserResponseDTO
+    public class UserRequestDTO
     {
         [DataMember]
         public UserDTO User { get; set; }

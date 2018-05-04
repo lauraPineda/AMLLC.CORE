@@ -59,7 +59,7 @@
     <Compile Include="Catalog\RequestCatalogDTO.cs" />
     <Compile Include="RequestDTO.cs" />
     <Compile Include="ResponseDTO.cs" />
-    <Compile Include="User\AddUserResponseDTO.cs" />
+    <Compile Include="User\UserRequestDTO.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Company\" />

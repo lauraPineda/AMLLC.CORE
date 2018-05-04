@@ -14,7 +14,7 @@ namespace AMLLC.CORE.DATAMANAGER
     public class UserDataManager
     {
 
-        public ResponseDTO<UserDTO> AddUser(AddUserResponseDTO request)
+        public ResponseDTO<UserDTO> AddUser(UserRequestDTO request)
         {
             Database database;
             DatabaseType databaseType = DatabaseType.SqlServer;
@@ -34,6 +34,24 @@ namespace AMLLC.CORE.DATAMANAGER
             return response;
         }
 
+        public ResponseDTO<int> UpdateUser(UserRequestDTO request)
+        {
+            Database database;
+            DatabaseType databaseType = DatabaseType.SqlServer;
+            database = DatabaseFactory.CreateDataBase(databaseType, "[USER].[USP_UPDATE_USER]", request.User.IdUser,
+                                                                                            request.User.Enabled,
+                                                                                            request.User.Password,
+                                                                                            request.Info.Name ?? null,
+                                                                                            request.Info.LastName ?? null,
+                                                                                            request.Info.Telephone ?? null,
+                                                                                            request.Info.HasTelephone);
+            ResponseDTO<int> response = GetRecordsAffected(database.DataReader);
+
+            database.Connection.Close();
+
+            return response;
+        }
+
         public ResponseDTO<int> AddUserLocation(UserLocationRolDTO request)
         {
             Database database;
@@ -42,12 +60,7 @@ namespace AMLLC.CORE.DATAMANAGER
                                                                                                     request.IdLocation,
                                                                                                     request.IdUser,
                                                                                                     request.IdUserSupervisor);
-            int da = database.DataReader.RecordsAffected;
-
-            ResponseDTO<int> response = new ResponseDTO<int>();
-            response.Result = da;
-
-            response.Success = true;
+            ResponseDTO<int> response=GetRecordsAffected(database.DataReader);
 
             database.Connection.Close();
 
@@ -72,6 +85,19 @@ namespace AMLLC.CORE.DATAMANAGER
                 response.Success = false;
                 response.Message = "Something went wrong when trying to add the user.";
             }
+            return response;
+        }
+
+        private ResponseDTO<int> GetRecordsAffected(DbDataReader DbDataReader)
+        {
+            int recordsAffectes = DbDataReader.RecordsAffected;
+
+            ResponseDTO<int> response = new ResponseDTO<int>();
+
+            response.Result = recordsAffectes;
+
+            response.Success = response.Result>0?true:false;
+            
             return response;
         }
 

@@ -1,4 +1,5 @@
-﻿using System.Runtime.Serialization;
+﻿using System;
+using System.Runtime.Serialization;
 
 namespace AMLLC.CORE.ENTITIES.DB
 {
@@ -16,7 +17,7 @@ namespace AMLLC.CORE.ENTITIES.DB
         [DataMember]
         public string Telephone { get; set; }
         [DataMember]
-        public bool HasTelephone { get; set; }
+        public Boolean HasTelephone { get; set; }
     }
 }
 

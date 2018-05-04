@@ -14,7 +14,7 @@ namespace AMLLC.CORE.TEST
         public void TestMethod1()
         {
             UserDataManager userDataManager = new UserDataManager();
-            AddUserResponseDTO addUserResponseDTO = new AddUserResponseDTO();
+            UserRequestDTO addUserResponseDTO = new UserRequestDTO();
             addUserResponseDTO.User = new UserDTO();
             addUserResponseDTO.User.IdCompany = 1;
             addUserResponseDTO.User.UserName = "Test1";

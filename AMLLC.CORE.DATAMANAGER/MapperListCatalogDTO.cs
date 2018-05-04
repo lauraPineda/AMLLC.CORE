@@ -86,7 +86,7 @@ namespace AMLLC.CORE.DATAMANAGER
             return response;
         }
 
-        public ResponseDTO<List<InfoDTO>> MapperLocationSupervisor(DbDataReader DbDataReader)
+        public ResponseDTO<List<InfoDTO>> MapperUser(DbDataReader DbDataReader)
         {
             ResponseDTO<List<InfoDTO>> response = new ResponseDTO<List<InfoDTO>>();
             response.Result = new List<InfoDTO>();
