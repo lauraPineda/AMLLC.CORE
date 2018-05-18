@@ -59,8 +59,13 @@
     <Compile Include="LoginTest.cs" />
     <Compile Include="HashTest.cs" />
     <Compile Include="UnitTest1.cs" />
+    <Compile Include="UnitTest2.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\AMLLC.CORE.BUSINESS\AMLLC.CORE.BUSINESS.csproj">
+      <Project>{F609F4BE-D993-4460-9ED5-B5070383DEC8}</Project>
+      <Name>AMLLC.CORE.BUSINESS</Name>
+    </ProjectReference>
     <ProjectReference Include="..\AMLLC.CORE.DATAMANAGER\AMLLC.CORE.DATAMANAGER.csproj">
       <Project>{03CB2CFB-5471-41E3-A9F4-FF46C66F9C11}</Project>
       <Name>AMLLC.CORE.DATAMANAGER</Name>

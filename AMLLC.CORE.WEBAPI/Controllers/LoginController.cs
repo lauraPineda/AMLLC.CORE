@@ -1,4 +1,5 @@
 ﻿using AMLLC.CORE.BUSINESS.Login;
+using AMLLC.CORE.DATAMANAGER;
 using AMLLC.CORE.ENTITIES;
 using AMLLC.CORE.ENTITIES.DB;
 using AMLLC.CORE.ENTITIES.Login;
@@ -7,9 +8,10 @@ using System.Web.Http;
 
 namespace AMLLC.CORE.WEBAPI.Controllers
 {
-    [RoutePrefix("Supervisor/Login")]
+    [RoutePrefix("Login")]
     public class LoginController : ApiController
     {
+       
         [HttpPost]
         [Route("Get")]
         public ResponseDTO<LoginResponseDTO>GetLogin(RequestDTO<UserDTO> request)
@@ -17,7 +19,8 @@ namespace AMLLC.CORE.WEBAPI.Controllers
             var response = new ResponseDTO<LoginResponseDTO>();
             try
             {
-                response = LoginLogic.GetInstance.GetLogin(request.Signature);
+                LoginLogic loginLogic = new LoginLogic();
+                response = loginLogic.ValidateUser(request.Signature);
             }
             catch (System.Data.SqlClient.SqlException exception)
             {

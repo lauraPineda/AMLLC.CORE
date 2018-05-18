@@ -3,6 +3,7 @@ using AMLLC.CORE.DATAMANAGER;
 using AMLLC.CORE.ENTITIES;
 using AMLLC.CORE.ENTITIES.Login;
 using AMLLC.CORE.ENTITIES.DB;
+using AMLLC.CORE.BUSINESS.Login;
 
 namespace AMLLC.CORE.TEST
 {
@@ -12,16 +13,18 @@ namespace AMLLC.CORE.TEST
         [TestMethod]
         public void TestMethod1()
         {
+            LoginLogic loginLogic = new LoginLogic();
             ResponseDTO<LoginResponseDTO> response = new ResponseDTO<LoginResponseDTO>();
 
-            LoginDataManger loginDataManger = new LoginDataManger();
+
 
             var User = new UserDTO()
             {
-                UserName = "JORGE"
+                UserName = "amllc",
+                Password="amllc2"
             };
 
-            response = loginDataManger.LoginSupervisor(User);
+            response = loginLogic.ValidateUser(User);
 
         }
     }

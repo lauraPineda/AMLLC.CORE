@@ -13,6 +13,25 @@ namespace AMLLC.CORE.DATAMANAGER
 {
     public class MapperListCatalogDTO
     {
+        public static int MapperId(DbDataReader DbDataReader)
+        {
+            int Id=0;
+
+            if (DbDataReader.HasRows)
+            {
+                while (DbDataReader.Read())
+                {
+
+                    Id = Helper.GetInt32(DbDataReader, "Id");
+                }
+
+            }
+            else
+                throw new ArgumentException("El registro no se inserto correctamente");
+
+            return Id;
+        }
+
         public ResponseDTO<List<ResponseCatalogDTO>> Mapper(DbDataReader DbDataReader)
         {
             ResponseDTO<List<ResponseCatalogDTO>> response = new ResponseDTO<List<ResponseCatalogDTO>>();

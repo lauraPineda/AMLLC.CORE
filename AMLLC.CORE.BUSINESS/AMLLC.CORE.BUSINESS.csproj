@@ -44,10 +44,10 @@
     <Compile Include="CatalogLogic.cs" />
     <Compile Include="Client\ClientLogic.cs" />
     <Compile Include="Company\CompanyLogic.cs" />
-    <Compile Include="Login\LoginLogic.cs" />
+    <Compile Include="LoginLogic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="User\UserLocationLogic.cs" />
-    <Compile Include="User\UserLogic.cs" />
+    <Compile Include="UserLogic.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AMLLC.CORE.DATAMANAGER\AMLLC.CORE.DATAMANAGER.csproj">
@@ -63,7 +63,9 @@
       <Name>AMLLC.CORE.SHARED</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Login\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
