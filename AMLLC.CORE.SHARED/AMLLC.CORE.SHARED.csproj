@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CatalogEnum.cs" />
+    <Compile Include="CatalogsProcedureName.cs" />
     <Compile Include="ExceptionHandler.cs" />
     <Compile Include="HashEncryption.cs" />
     <Compile Include="Helper.cs" />

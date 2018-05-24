@@ -6,6 +6,7 @@ namespace AMLLC.CORE.ENTITIES.DB
     [DataContract]
     public class UserDTO
     {
+
         public UserDTO()
         {
             Enabled = true;

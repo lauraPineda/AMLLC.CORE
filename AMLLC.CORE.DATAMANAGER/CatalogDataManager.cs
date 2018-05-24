@@ -23,11 +23,11 @@ namespace AMLLC.CORE.DATAMANAGER
             databaseType = DatabaseType.SqlServer;
         }
 
-        public ResponseDTO<List<ResponseCatalogDTO>> GetListCatalog(RequestCatalogDTO request, string uspName)
+        public ResponseDTO<List<CatalogsDTO>> GetListCatalog(RequestCatalogDTO request, string uspName)
         {
             database = DatabaseFactory.CreateDataBase(databaseType, uspName, request.IncludeDisabled, request.Id);
 
-            ResponseDTO<List<ResponseCatalogDTO>> response = mapperListCatalogDTO.Mapper(database.DataReader);
+            ResponseDTO<List<CatalogsDTO>> response = mapperListCatalogDTO.Mapper(database.DataReader);
 
             database.Connection.Close();
 
@@ -36,12 +36,12 @@ namespace AMLLC.CORE.DATAMANAGER
 
 
 
-        public ResponseDTO<List<ResponseCatalogDTO>> GetListCompanyClients(RequestCompanyClientsDTO request)
+        public ResponseDTO<List<CatalogsDTO>> GetListCompanyClients(RequestCompanyClientsDTO request)
         {
 
             database = DatabaseFactory.CreateDataBase(databaseType, "[CLIENT].[USP_GET_COMPANYCLIENTS]", request.IdCompany, request.Client.IncludeDisabled, request.Client.Id);
 
-            ResponseDTO<List<ResponseCatalogDTO>> response = mapperListCatalogDTO.Mapper(database.DataReader);
+            ResponseDTO<List<CatalogsDTO>> response = mapperListCatalogDTO.Mapper(database.DataReader);
 
             database.Connection.Close();
 

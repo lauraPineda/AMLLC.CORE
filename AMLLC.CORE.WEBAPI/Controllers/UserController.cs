@@ -39,7 +39,7 @@ namespace AMLLC.CORE.WEBAPI.Controllers
             var response = new ResponseDTO<UserRequestDTO>();
             try
             {
-                response= userLogic.GetById(request);
+                response= userLogic.GetById(request.Signature);
             }
             catch (System.Data.SqlClient.SqlException exception)
             {
@@ -68,7 +68,7 @@ namespace AMLLC.CORE.WEBAPI.Controllers
             var response = new ResponseDTO<IEnumerable<UserRequestDTO>>();
             try
             {
-                response = userLogic.GetAll(request);
+                response = userLogic.GetAll(request.Signature);
             }
             catch (System.Data.SqlClient.SqlException exception)
             {
@@ -97,7 +97,7 @@ namespace AMLLC.CORE.WEBAPI.Controllers
             var response = new ResponseDTO<int>();
             try
             {
-                response = userLogic.AddUser(request);
+                response = userLogic.Add(request.Signature);
             }
             catch (System.Data.SqlClient.SqlException exception)
             {
@@ -126,7 +126,7 @@ namespace AMLLC.CORE.WEBAPI.Controllers
             var response = new ResponseDTO<int>();
             try
             {
-                response = userLogic.UpdateUser(request);
+                response = userLogic.Update(request.Signature);
             }
             catch (System.Data.SqlClient.SqlException exception)
             {

@@ -3,7 +3,7 @@
 namespace AMLLC.CORE.ENTITIES
 {
     [DataContract]
-    public class ResponseCatalogDTO
+    public class CatalogsDTO
     {
         [DataMember]
         public int Id { get; set; }

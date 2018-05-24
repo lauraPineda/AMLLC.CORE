@@ -18,12 +18,12 @@ namespace AMLLC.CORE.BUSINESS.User
             _userRequestRepository = repository;
         }
 
-        public ResponseDTO<UserRequestDTO> GetById(RequestDTO<int> request)
+        public ResponseDTO<UserRequestDTO> GetById(int request)
         {
             return _userRequestRepository.GetById(request);
         }
 
-        public ResponseDTO<IEnumerable<UserRequestDTO>> GetAll(RequestDTO<Boolean> request)
+        public ResponseDTO<IEnumerable<UserRequestDTO>> GetAll(Boolean request)
         {
             return _userRequestRepository.GetAll(request);
         }
@@ -32,9 +32,9 @@ namespace AMLLC.CORE.BUSINESS.User
         /// </summary>
         /// <param name="request"></param>
         /// <returns>Regresa id de usuario</returns>
-        public ResponseDTO<int> AddUser(RequestDTO<UserRequestDTO> request)
+        public ResponseDTO<int> Add(UserRequestDTO request)
         {
-            request.Signature.User.Password = HashEncryption.Hash(request.Signature.User.Password);
+            request.User.Password = HashEncryption.Hash(request.User.Password);
 
             return _userRequestRepository.Add(request);
         }
@@ -44,13 +44,13 @@ namespace AMLLC.CORE.BUSINESS.User
         /// </summary>
         /// <param name="request"></param>
         /// <returns>Regresa ibjeto de tipo UserDTO</returns>
-        public ResponseDTO<int> UpdateUser(RequestDTO<UserRequestDTO> request)
+        public ResponseDTO<int> Update(UserRequestDTO request)
         {
 
-            request.Signature.User = request.Signature.User==null ? new UserDTO(request.Signature.Info.IdUser) : request.Signature.User;
-            request.Signature.Info = request.Signature.Info==null ? new InfoDTO() : request.Signature.Info;
+            request.User = request.User==null ? new UserDTO(request.Info.IdUser) : request.User;
+            request.Info = request.Info==null ? new InfoDTO() : request.Info;
 
-            request.Signature.User.Password=!string.IsNullOrEmpty(request.Signature.User.Password)? HashEncryption.Hash(request.Signature.User.Password):null;
+            request.User.Password=!string.IsNullOrEmpty(request.User.Password)? HashEncryption.Hash(request.User.Password):null;
             
             return _userRequestRepository.Update(request);
         }

@@ -12,13 +12,13 @@ namespace AMLLC.CORE.TEST
         [TestMethod]
         public void UpdateUser()
         {
-            UserLogic updateUser = new UserLogic();
+            //UserLogic updateUser = new UserLogic();
             RequestDTO<UserRequestDTO> userRequestDTO = new RequestDTO<UserRequestDTO>();
             userRequestDTO.Signature.User = new ENTITIES.DB.UserDTO(1);
             userRequestDTO.Signature.User.Password = "amllc";
 
 
-            updateUser.UpdateUser(userRequestDTO);
+            //updateUser.UpdateUser(userRequestDTO);
         }
     }
 }

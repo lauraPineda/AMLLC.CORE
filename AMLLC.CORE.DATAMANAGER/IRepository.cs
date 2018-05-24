@@ -9,10 +9,10 @@ namespace AMLLC.CORE.DATAMANAGER
 {
     public interface IRepository<Tkey, TEntity>
     {
-        ResponseDTO<Tkey> Add(RequestDTO<TEntity> entity);
-        ResponseDTO<Tkey> Update(RequestDTO<TEntity> entity);
-        ResponseDTO<IEnumerable<TEntity>> GetAll(RequestDTO<Boolean> IncludeDisabled);
-        ResponseDTO<TEntity> GetById(RequestDTO<Tkey> id);
+        ResponseDTO<Tkey> Add(TEntity entity);
+        ResponseDTO<Tkey> Update(TEntity entity);
+        ResponseDTO<IEnumerable<TEntity>> GetAll(Boolean IncludeDisabled);
+        ResponseDTO<TEntity> GetById(Tkey id);
     }
 
 }

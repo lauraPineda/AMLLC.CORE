@@ -49,6 +49,7 @@
     <Compile Include="Mapper\LoginResponseMapper.cs" />
     <Compile Include="Mapper\RoleMapper.cs" />
     <Compile Include="Mapper\UserRequestMapper.cs" />
+    <Compile Include="Repository\CompanyRequestRepository.cs" />
     <Compile Include="Repository\LoginResponseDataManager.cs" />
     <Compile Include="MapperListCatalogDTO.cs" />
     <Compile Include="ProjectDataManager.cs" />

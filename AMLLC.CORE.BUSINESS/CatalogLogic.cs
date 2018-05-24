@@ -21,9 +21,9 @@ namespace AMLLC.CORE.BUSINESS
             catalogDataManager = new CatalogDataManager();
         }
 
-        public ResponseDTO<List<ResponseCatalogDTO>> GetListCatalog(RequestCatalogDTO request, Catalogs catalog)
+        public ResponseDTO<List<CatalogsDTO>> GetListCatalog(RequestCatalogDTO request, Catalogs catalog)
         {
-            ResponseDTO<List<ResponseCatalogDTO>> response;
+            ResponseDTO<List<CatalogsDTO>> response;
             
             switch (catalog)
             {
@@ -40,9 +40,9 @@ namespace AMLLC.CORE.BUSINESS
             return response;
         }
 
-        public ResponseDTO<List<ResponseCatalogDTO>> GetListCompanyClients(RequestCompanyClientsDTO request)
+        public ResponseDTO<List<CatalogsDTO>> GetListCompanyClients(RequestCompanyClientsDTO request)
         {
-            ResponseDTO<List<ResponseCatalogDTO>> response = catalogDataManager.GetListCompanyClients(request);
+            ResponseDTO<List<CatalogsDTO>> response = catalogDataManager.GetListCompanyClients(request);
 
             return response;
         }

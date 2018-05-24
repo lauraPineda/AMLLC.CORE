@@ -13,23 +13,34 @@ namespace AMLLC.CORE.DATAMANAGER
 {
     public class LoginResponseDataManager
     {
+        #region "Global variables"
         Database database;
         DatabaseType databaseType;
+        #endregion
 
+        #region "Constructor"
         public LoginResponseDataManager()
         {
             databaseType = DatabaseType.SqlServer;
         }
+        #endregion
 
-        public ResponseDTO<LoginResponseDTO> GetByUser(UserDTO entity)
+        #region "Methods"
+        /// <summary>
+        /// Obtiene la infarmación de un usuario con los roles de supervisor y/o administrador por medio de el nombre de usuario
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <returns>Objeto de tipo ResponseDTO con el listado de los roles de tipo supervisor y/o administrador asociados a un usuario</returns>
+        public ResponseDTO<List<LoginResponseDTO>> GetByUser(UserDTO entity)
         {
             database = DatabaseFactory.CreateDataBase(databaseType, "[USER].[USP_GET_LOGININFO_SUPERVISOR]", entity.UserName.ToString());
 
-            ResponseDTO<LoginResponseDTO> response = LoginResponseMapper.MapperLoginDTO(database.DataReader);
+            ResponseDTO<List<LoginResponseDTO>> response = LoginResponseMapper.MapperLoginDTO(database.DataReader);
 
             database.Connection.Close();
 
             return response;
         }
+        #endregion
     }
 }

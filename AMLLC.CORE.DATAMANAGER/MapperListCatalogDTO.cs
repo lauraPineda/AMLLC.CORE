@@ -32,17 +32,17 @@ namespace AMLLC.CORE.DATAMANAGER
             return Id;
         }
 
-        public ResponseDTO<List<ResponseCatalogDTO>> Mapper(DbDataReader DbDataReader)
+        public ResponseDTO<List<CatalogsDTO>> Mapper(DbDataReader DbDataReader)
         {
-            ResponseDTO<List<ResponseCatalogDTO>> response = new ResponseDTO<List<ResponseCatalogDTO>>();
-            response.Result = new List<ResponseCatalogDTO>();
+            ResponseDTO<List<CatalogsDTO>> response = new ResponseDTO<List<CatalogsDTO>>();
+            response.Result = new List<CatalogsDTO>();
             response.Success = true;
 
             if (DbDataReader.HasRows)
             {
                 while (DbDataReader.Read())
                 {
-                    response.Result.Add(new ResponseCatalogDTO
+                    response.Result.Add(new CatalogsDTO
                     {
                         Id = Helper.GetInt32(DbDataReader, "Id"),
                         Name = Helper.GetString(DbDataReader, "Name"),

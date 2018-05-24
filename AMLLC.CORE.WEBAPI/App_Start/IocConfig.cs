@@ -20,7 +20,8 @@ namespace AMLLC.CORE.WEBAPI
             //builder.RegisterType < EntityFrameworkProductRepository> ().AsImplementedInterfaces().InstancePerApiRequest().InstancePerHttpRequest();
 
             builder.RegisterType<UserRequestRepository>().AsImplementedInterfaces().InstancePerApiRequest();
-            
+            builder.RegisterType<CompanyRequestRepository>().AsImplementedInterfaces().InstancePerApiRequest();
+
             var container = builder.Build();
             var resolver = new AutofacWebApiDependencyResolver(container);
             GlobalConfiguration.Configuration.DependencyResolver = resolver;

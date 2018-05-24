@@ -11,29 +11,29 @@ namespace AMLLC.CORE.DATAMANAGER
 {
     public class CatalogRepository //: IRepository<int, ResponseCatalogDTO>
     {
-        public int Add(ResponseCatalogDTO entity)
+        public int Add(CatalogsDTO entity)
         {
             throw new NotImplementedException();
         }
 
-        public void Delete(ResponseCatalogDTO entity)
+        public void Delete(CatalogsDTO entity)
         {
             throw new NotImplementedException();
         }
 
-        public IEnumerable<ResponseCatalogDTO> GetAll()
+        public IEnumerable<CatalogsDTO> GetAll()
 
         {
             Database database;
             database = DatabaseFactory.CreateDataBase(DatabaseType.SqlServer, "[CLIENT].[USP_GET_COMPANIES]", 1,false);
 
-            List < ResponseCatalogDTO > response = new List<ResponseCatalogDTO>();
+            List < CatalogsDTO > response = new List<CatalogsDTO>();
 
             if (database.DataReader.HasRows)
             {
                 while (database.DataReader.Read())
                 {
-                    response.Add(new ResponseCatalogDTO
+                    response.Add(new CatalogsDTO
                     {
                         Id = Helper.GetInt32(database.DataReader, "Id"),
                         Name = Helper.GetString(database.DataReader, "Name"),
@@ -44,16 +44,16 @@ namespace AMLLC.CORE.DATAMANAGER
 
             }
 
-            IEnumerable<ResponseCatalogDTO> numbers = response.AsEnumerable();
+            IEnumerable<CatalogsDTO> numbers = response.AsEnumerable();
             return response;
         }
 
-        public ResponseCatalogDTO GetById(int id)
+        public CatalogsDTO GetById(int id)
         {
             throw new NotImplementedException();
         }
 
-        public void Update(ResponseCatalogDTO entity)
+        public void Update(CatalogsDTO entity)
         {
             throw new NotImplementedException();
         }

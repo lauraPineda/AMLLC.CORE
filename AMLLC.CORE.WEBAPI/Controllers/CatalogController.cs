@@ -17,39 +17,12 @@ namespace AMLLC.CORE.WEBAPI.Controllers
     public class CatalogController : ApiController
     {
         CatalogLogic catalogLogic;
-
-
-        [HttpPost]
-        [Route("GetCompanies")]
-        public ResponseDTO<List<ResponseCatalogDTO>> ListCompanies(RequestDTO<RequestCatalogDTO> request)
-        {
-            var response = new ResponseDTO<List<ResponseCatalogDTO>>();
-            try
-            {
-                catalogLogic = new CatalogLogic();
-                response = catalogLogic.GetListCatalog(request.Signature, CatalogEnum.Catalogs.Company);
-            }
-            catch (System.Data.SqlClient.SqlException exception)
-            {
-                response.Success = false;
-                response.Message = exception.Message;
-                ExceptionHandler.Instance.WriteExceptionLog(exception);
-            }
-            catch (System.Exception exception)
-            {
-                response.Success = false;
-                response.Message = exception.Message;
-                ExceptionHandler.Instance.WriteExceptionLog(exception);
-            }
-
-            return response;
-        }
-
+        
         [HttpPost]
         [Route("GetRoles")]
-        public ResponseDTO<List<ResponseCatalogDTO>> ListRoles(RequestDTO<RequestCatalogDTO> request)
+        public ResponseDTO<List<CatalogsDTO>> ListRoles(RequestDTO<RequestCatalogDTO> request)
         {
-            var response = new ResponseDTO<List<ResponseCatalogDTO>>();
+            var response = new ResponseDTO<List<CatalogsDTO>>();
             try
             {
                 catalogLogic = new CatalogLogic();
@@ -73,9 +46,9 @@ namespace AMLLC.CORE.WEBAPI.Controllers
 
         [HttpPost]
         [Route("GetCompanyClients")]
-        public ResponseDTO<List<ResponseCatalogDTO>> ListCompanyClients(RequestDTO<RequestCompanyClientsDTO> request)
+        public ResponseDTO<List<CatalogsDTO>> ListCompanyClients(RequestDTO<RequestCompanyClientsDTO> request)
         {
-            var response = new ResponseDTO<List<ResponseCatalogDTO>>();
+            var response = new ResponseDTO<List<CatalogsDTO>>();
             try
             {
                 catalogLogic = new CatalogLogic();

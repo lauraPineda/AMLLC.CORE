@@ -49,10 +49,6 @@ namespace AMLLC.CORE.DATA
                             sqlParameter.SqlDbType = SqlDbType.Structured;
                         }
                     }
-                    else if(!sqlParameter.DbType.Equals(DbType.Int32))
-                    {
-                        arrobjParameters[intIndexParam] = "";
-                    }
                     sqlParameter.SqlValue = arrobjParameters[intIndexParam];
                     intIndexParam += 1;
                 }

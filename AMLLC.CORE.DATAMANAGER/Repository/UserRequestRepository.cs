@@ -23,18 +23,18 @@ namespace AMLLC.CORE.DATAMANAGER
         {
             databaseType = DatabaseType.SqlServer;
         }
-        public ResponseDTO<int> Add(RequestDTO<UserRequestDTO> entity)
+        public ResponseDTO<int> Add(UserRequestDTO entity)
         {
             ResponseDTO<int> response = new ResponseDTO<int>();
             response.Success = true;
 
-            database = DatabaseFactory.CreateDataBase(databaseType, "[USER].[USP_ADD_USER]", entity.Signature.User.IdCompany,
-                                                                                           entity.Signature.User.UserName,
-                                                                                           entity.Signature.User.Password,
-                                                                                           entity.Signature.Info.Name,
-                                                                                           entity.Signature.Info.LastName,
-                                                                                           entity.Signature.Info.Telephone,
-                                                                                           entity.Signature.Info.HasTelephone);
+            database = DatabaseFactory.CreateDataBase(databaseType, "[USER].[USP_ADD_USER]", entity.User.IdCompany,
+                                                                                           entity.User.UserName,
+                                                                                           entity.User.Password,
+                                                                                           entity.Info.Name,
+                                                                                           entity.Info.LastName,
+                                                                                           entity.Info.Telephone,
+                                                                                           entity.Info.HasTelephone);
 
             response=CommonMapper.MapperId(database.DataReader);
 
@@ -45,10 +45,10 @@ namespace AMLLC.CORE.DATAMANAGER
         }
 
 
-        public ResponseDTO<IEnumerable<UserRequestDTO>> GetAll(RequestDTO<Boolean> IncludeDisabled)
+        public ResponseDTO<IEnumerable<UserRequestDTO>> GetAll(bool IncludeDisabled)
         {
             ResponseDTO<IEnumerable<UserRequestDTO>> response = new ResponseDTO<IEnumerable<UserRequestDTO>>();
-            ResponseDTO<List<UserRequestDTO>> responseList = Get(IncludeDisabled.Signature,null);
+            ResponseDTO<List<UserRequestDTO>> responseList = Get(IncludeDisabled,null);
 
             if (responseList.Success)
                 response.Result = responseList.Result.AsEnumerable();
@@ -56,25 +56,25 @@ namespace AMLLC.CORE.DATAMANAGER
         }
 
 
-        public ResponseDTO<UserRequestDTO> GetById(RequestDTO<int> entity)
+        public ResponseDTO<UserRequestDTO> GetById(int id)
         {
             ResponseDTO<UserRequestDTO> response = new ResponseDTO<UserRequestDTO>();
-            ResponseDTO<List<UserRequestDTO>> responseList = Get(true, entity.Signature);
+            ResponseDTO<List<UserRequestDTO>> responseList = Get(true, id);
 
             if (responseList.Success)
                 response.Result = responseList.Result.FirstOrDefault();
             return response;
         }
 
-        public ResponseDTO<int> Update(RequestDTO<UserRequestDTO> entity)
+        public ResponseDTO<int> Update(UserRequestDTO entity)
         {
-            database = DatabaseFactory.CreateDataBase(databaseType, "[USER].[USP_UPDATE_USER]", entity.Signature.User.IdUser,
-                                                                                            entity.Signature.User.Enabled,
-                                                                                            entity.Signature.User.Password,
-                                                                                            entity.Signature.Info.Name,
-                                                                                            entity.Signature.Info.LastName,
-                                                                                            entity.Signature.Info.Telephone,
-                                                                                            entity.Signature.Info.HasTelephone);
+            database = DatabaseFactory.CreateDataBase(databaseType, "[USER].[USP_UPDATE_USER]", entity.User.IdUser,
+                                                                                            entity.User.Enabled,
+                                                                                            entity.User.Password,
+                                                                                            entity.Info.Name,
+                                                                                            entity.Info.LastName,
+                                                                                            entity.Info.Telephone,
+                                                                                            entity.Info.HasTelephone);
             ResponseDTO<int> response = CommonMapper.GetRecordsAffected(database.DataReader);
 
             database.Connection.Close();
@@ -83,7 +83,7 @@ namespace AMLLC.CORE.DATAMANAGER
         }
 
 
-        private ResponseDTO<List<UserRequestDTO>> Get(Boolean IncludeDisabled,int? UserId)
+        private ResponseDTO<List<UserRequestDTO>> Get(bool IncludeDisabled,int? UserId)
         {
              
             database = DatabaseFactory.CreateDataBase(databaseType, "[USER].[USP_GET_INFOUSER]", IncludeDisabled, UserId);
