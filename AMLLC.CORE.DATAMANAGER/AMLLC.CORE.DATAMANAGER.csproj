@@ -42,20 +42,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CatalogDataManager.cs" />
-    <Compile Include="CatalogRepository.cs" />
-    <Compile Include="CompanyDataManager.cs" />
     <Compile Include="Mapper\CommonMapper.cs" />
     <Compile Include="Mapper\LoginResponseMapper.cs" />
     <Compile Include="Mapper\RoleMapper.cs" />
     <Compile Include="Mapper\UserRequestMapper.cs" />
+    <Compile Include="Repository\ClientRequestRepository.cs" />
     <Compile Include="Repository\CompanyRequestRepository.cs" />
     <Compile Include="Repository\LoginResponseDataManager.cs" />
-    <Compile Include="MapperListCatalogDTO.cs" />
-    <Compile Include="ProjectDataManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="IRepository.cs" />
-    <Compile Include="UserDataManager.cs" />
     <Compile Include="Repository\UserRequestRepository.cs" />
   </ItemGroup>
   <ItemGroup>

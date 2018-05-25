@@ -41,12 +41,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CatalogLogic.cs" />
-    <Compile Include="Client\ClientLogic.cs" />
-    <Compile Include="Company\CompanyLogic.cs" />
+    <Compile Include="ClientLogic.cs" />
+    <Compile Include="CompanyLogic.cs" />
     <Compile Include="LoginLogic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="User\UserLocationLogic.cs" />
     <Compile Include="UserLogic.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -64,7 +62,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Login\" />
+    <Folder Include="User\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

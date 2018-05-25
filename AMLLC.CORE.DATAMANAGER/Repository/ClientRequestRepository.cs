@@ -1,17 +1,16 @@
-﻿using AMLLC.CORE.ENTITIES.DB;
+﻿using AMLLC.CORE.DATA;
+using AMLLC.CORE.DATAMANAGER.Mapper;
+using AMLLC.CORE.ENTITIES;
+using AMLLC.CORE.ENTITIES.RequestFilter;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using AMLLC.CORE.ENTITIES;
-using AMLLC.CORE.SHARED;
-using AMLLC.CORE.DATA;
-using AMLLC.CORE.DATAMANAGER.Mapper;
 
 namespace AMLLC.CORE.DATAMANAGER
 {
-    public class CompanyRequestRepository : IRepository<int, CatalogsDTO,bool>
+    public class ClientRequestRepository : IRepository<int, CatalogsDTO, CompanyFiltersDTO>
     {
         #region "Global variables"
         Database database;
@@ -19,7 +18,7 @@ namespace AMLLC.CORE.DATAMANAGER
         #endregion
 
         #region "Constructor"
-        public CompanyRequestRepository()
+        public ClientRequestRepository()
         {
             databaseType = DatabaseType.SqlServer;
         }
@@ -36,7 +35,7 @@ namespace AMLLC.CORE.DATAMANAGER
             ResponseDTO<int> response = new ResponseDTO<int>();
             response.Success = true;
 
-            database = DatabaseFactory.CreateDataBase(databaseType, "[CLIENT].[USP_ADD_COMPANY]", entity.Name,
+            database = DatabaseFactory.CreateDataBase(databaseType, "", entity.Name,
                                                                                                   entity.Description);
 
             response = CommonMapper.GetRecordsAffected(database.DataReader);
@@ -51,14 +50,18 @@ namespace AMLLC.CORE.DATAMANAGER
         /// </summary>
         /// <param name="IncludeDisabled">Parametro donde se indica si se obtendran los registros deshabilitados</param>
         /// <returns>Objeto de tipo ResponseDTO con el listado de las compañias obtenidas</returns>
-        public ResponseDTO<IEnumerable<CatalogsDTO>> GetAll(bool filter)
+        public ResponseDTO<IEnumerable<CatalogsDTO>> GetAll(CompanyFiltersDTO filter)
         {
 
             ResponseDTO<IEnumerable<CatalogsDTO>> response = new ResponseDTO<IEnumerable<CatalogsDTO>>();
-            ResponseDTO<List<CatalogsDTO>> responseList = Get(filter, null);
+            ResponseDTO<List<CatalogsDTO>> responseList = Get(filter.Client.IncludeDisabled,filter.IdCompany,null);
+
+            response.Message = responseList.Message;
+            response.Success = responseList.Success;
 
             if (responseList.Success)
                 response.Result = responseList.Result.AsEnumerable();
+
             return response;
 
         }
@@ -71,10 +74,10 @@ namespace AMLLC.CORE.DATAMANAGER
         public ResponseDTO<CatalogsDTO> GetById(int id)
         {
             ResponseDTO<CatalogsDTO> response = new ResponseDTO<CatalogsDTO>();
-            ResponseDTO<List<CatalogsDTO>> responseList = Get(true, id);
+            //ResponseDTO<List<CatalogsDTO>> responseList = Get(true, id);
 
-            if (responseList.Success)
-                response.Result = responseList.Result.FirstOrDefault();
+            //if (responseList.Success)
+            //    response.Result = responseList.Result.FirstOrDefault();
             return response;
         }
 
@@ -85,7 +88,7 @@ namespace AMLLC.CORE.DATAMANAGER
         /// <returns>Objeto de tipo ResponseDTO con el número de registros afectados</returns>
         public ResponseDTO<int> Update(CatalogsDTO entity)
         {
-            database = DatabaseFactory.CreateDataBase(databaseType, "[CLIENT].[USP_UPDATE_COMPANY]", entity.Id,
+            database = DatabaseFactory.CreateDataBase(databaseType, "", entity.Id,
                                                                                                         entity.Name,
                                                                                                         entity.Description,
                                                                                                         entity.Enabled);
@@ -104,9 +107,9 @@ namespace AMLLC.CORE.DATAMANAGER
         /// <param name="IncludeDisabled">Parametro donde se indica si se obtendran los registros deshabilitados</param>
         /// <param name="CompanyId">Parametro donde se indica el número de Id de la compañia a obtener</param>
         /// <returns>Objeto de tipo ResponseDTO con el listado de las compañias obtenidas</returns>
-        private ResponseDTO<List<CatalogsDTO>> Get(bool IncludeDisabled, int? CompanyId)
+        private ResponseDTO<List<CatalogsDTO>> Get(bool IncludeDisabled, int? CompanyId, int? ClientId)
         {
-            database = DatabaseFactory.CreateDataBase(databaseType, CatalogsProcedureName.Get(CatalogEnum.Catalogs.Company), IncludeDisabled, CompanyId);
+            database = DatabaseFactory.CreateDataBase(databaseType, "[CLIENT].[USP_GET_COMPANIES]", IncludeDisabled, CompanyId, ClientId);
             ResponseDTO<List<CatalogsDTO>> response = CommonMapper.CatalogsMapper(database.DataReader);
             database.Connection.Close();
 

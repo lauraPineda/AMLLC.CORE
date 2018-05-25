@@ -1,33 +1,28 @@
 ﻿using AMLLC.CORE.DATAMANAGER;
 using AMLLC.CORE.ENTITIES;
-using AMLLC.CORE.ENTITIES.Catalog;
-using AMLLC.CORE.ENTITIES.DB;
-using System;
+using AMLLC.CORE.ENTITIES.RequestFilter;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace AMLLC.CORE.BUSINESS.Company
+namespace AMLLC.CORE.BUSINESS
 {
-    public class CompanyLogic
+    public class ClientLogic
     {
-        private IRepository<int, CatalogsDTO> _companyRequestRepository;
+        private IRepository<int, CatalogsDTO, CompanyFiltersDTO> _clientRequestRepository;
 
-        public CompanyLogic(IRepository<int, CatalogsDTO> repository)
+        public ClientLogic(IRepository<int, CatalogsDTO, CompanyFiltersDTO> repository)
         {
-            _companyRequestRepository = repository;
+            _clientRequestRepository = repository;
         }
 
 
         public ResponseDTO<CatalogsDTO> GetById(int request)
         {
-            return _companyRequestRepository.GetById(request);
+            return _clientRequestRepository.GetById(request);
         }
 
-        public ResponseDTO<IEnumerable<CatalogsDTO>> GetAll(Boolean request)
+        public ResponseDTO<IEnumerable<CatalogsDTO>> GetAll(CompanyFiltersDTO filter)
         {
-            return _companyRequestRepository.GetAll(request);
+            return _clientRequestRepository.GetAll(filter);
         }
         /// <summary>
         /// Se agrega información de usuarios nuevos
@@ -36,7 +31,7 @@ namespace AMLLC.CORE.BUSINESS.Company
         /// <returns>Regresa id de usuario</returns>
         public ResponseDTO<int> Add(CatalogsDTO request)
         {
-            return _companyRequestRepository.Add(request);
+            return _clientRequestRepository.Add(request);
         }
 
         // <summary>
@@ -46,7 +41,8 @@ namespace AMLLC.CORE.BUSINESS.Company
         /// <returns>Regresa ibjeto de tipo UserDTO</returns>
         public ResponseDTO<int> Update(CatalogsDTO request)
         {
-            return _companyRequestRepository.Update(request);
+            return _clientRequestRepository.Update(request);
         }
+
     }
 }

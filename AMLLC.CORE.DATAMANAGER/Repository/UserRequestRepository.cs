@@ -15,7 +15,7 @@ using System.Data.Common;
 
 namespace AMLLC.CORE.DATAMANAGER
 {
-    public class UserRequestRepository : IRepository<int, UserRequestDTO>
+    public class UserRequestRepository : IRepository<int, UserRequestDTO,bool>
     {
         Database database;
         DatabaseType databaseType;
@@ -45,10 +45,10 @@ namespace AMLLC.CORE.DATAMANAGER
         }
 
 
-        public ResponseDTO<IEnumerable<UserRequestDTO>> GetAll(bool IncludeDisabled)
+        public ResponseDTO<IEnumerable<UserRequestDTO>> GetAll(bool filter)
         {
             ResponseDTO<IEnumerable<UserRequestDTO>> response = new ResponseDTO<IEnumerable<UserRequestDTO>>();
-            ResponseDTO<List<UserRequestDTO>> responseList = Get(IncludeDisabled,null);
+            ResponseDTO<List<UserRequestDTO>> responseList = Get(filter, null);
 
             if (responseList.Success)
                 response.Result = responseList.Result.AsEnumerable();

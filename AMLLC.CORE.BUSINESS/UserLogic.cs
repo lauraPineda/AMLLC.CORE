@@ -3,17 +3,16 @@ using AMLLC.CORE.ENTITIES;
 using AMLLC.CORE.ENTITIES.DB;
 using AMLLC.CORE.ENTITIES.User;
 using AMLLC.CORE.SHARED;
-using System;
 using System.Collections.Generic;
 
 namespace AMLLC.CORE.BUSINESS.User
 {
     public class UserLogic
     {
-        private IRepository<int, UserRequestDTO> _userRequestRepository;
+        private IRepository<int, UserRequestDTO,bool> _userRequestRepository;
 
 
-        public UserLogic(IRepository<int, UserRequestDTO> repository)
+        public UserLogic(IRepository<int, UserRequestDTO,bool> repository)
         {
             _userRequestRepository = repository;
         }
@@ -23,7 +22,7 @@ namespace AMLLC.CORE.BUSINESS.User
             return _userRequestRepository.GetById(request);
         }
 
-        public ResponseDTO<IEnumerable<UserRequestDTO>> GetAll(Boolean request)
+        public ResponseDTO<IEnumerable<UserRequestDTO>> GetAll(bool request)
         {
             return _userRequestRepository.GetAll(request);
         }

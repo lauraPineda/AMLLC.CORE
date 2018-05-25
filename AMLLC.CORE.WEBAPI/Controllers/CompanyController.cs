@@ -1,5 +1,4 @@
 ﻿using AMLLC.CORE.BUSINESS;
-using AMLLC.CORE.BUSINESS.Company;
 using AMLLC.CORE.DATAMANAGER;
 using AMLLC.CORE.ENTITIES;
 using AMLLC.CORE.ENTITIES.Catalog;
@@ -18,7 +17,7 @@ namespace AMLLC.CORE.WEBAPI.Controllers
         #endregion
 
         #region "Constructor"
-        public CompanyController(IRepository<int, CatalogsDTO> repository)
+        public CompanyController(IRepository<int, CatalogsDTO,bool> repository)
         {
             companyLogic = new CompanyLogic(repository);
         }
@@ -26,7 +25,7 @@ namespace AMLLC.CORE.WEBAPI.Controllers
 
         [HttpPost]
         [Route("GetById")]
-        public ResponseDTO<CatalogsDTO> ListCompanies(RequestDTO<int> request)
+        public ResponseDTO<CatalogsDTO> GetById(RequestDTO<int> request)
         {
             var response = new ResponseDTO<CatalogsDTO>();
             try

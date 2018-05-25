@@ -21,7 +21,7 @@ namespace AMLLC.CORE.WEBAPI.Controllers
         #endregion
 
         #region "Constructor"
-        public UserController(IRepository<int, UserRequestDTO> repository)
+        public UserController(IRepository<int, UserRequestDTO,bool> repository)
         {
             userLogic = new UserLogic(repository);
         }

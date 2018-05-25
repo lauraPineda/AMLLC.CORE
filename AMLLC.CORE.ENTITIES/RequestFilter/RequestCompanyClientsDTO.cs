@@ -5,10 +5,10 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AMLLC.CORE.ENTITIES.Catalog
+namespace AMLLC.CORE.ENTITIES.RequestFilter
 {
     [DataContract]
-    public class RequestCompanyClientsDTO
+    public class CompanyFiltersDTO
     {
         [DataMember]
         public int IdCompany { get; set; }
