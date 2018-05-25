@@ -8,13 +8,13 @@ using System.Threading.Tasks;
 namespace AMLLC.CORE.ENTITIES.Catalog
 {
     [DataContract]
-    public class RequestClientProjectDTO
+    public class RequestProyectDTO
     {
         [DataMember]
         public int IdCompany { get; set; }
         [DataMember]
         public int IdClient { get; set; }
         [DataMember]
-        public RequestCatalogDTO Project { get; set; }
+        public RequestCatalogDTO Proyect { get; set; }
     }
 }

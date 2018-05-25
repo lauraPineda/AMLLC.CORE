@@ -20,9 +20,9 @@ namespace AMLLC.CORE.BUSINESS
             return _companyRequestRepository.GetById(request);
         }
 
-        public ResponseDTO<IEnumerable<CatalogsDTO>> GetAll(Boolean request)
+        public ResponseDTO<IEnumerable<CatalogsDTO>> GetAll(Boolean filter)
         {
-            return _companyRequestRepository.GetAll(request);
+            return _companyRequestRepository.GetAll(filter);
         }
         /// <summary>
         /// Se agrega información de usuarios nuevos

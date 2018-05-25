@@ -54,7 +54,7 @@ namespace AMLLC.CORE.DATAMANAGER
         {
 
             ResponseDTO<IEnumerable<CatalogsDTO>> response = new ResponseDTO<IEnumerable<CatalogsDTO>>();
-            ResponseDTO<List<CatalogsDTO>> responseList = Get(filter.Client.IncludeDisabled,filter.IdCompany,null);
+            ResponseDTO<List<CatalogsDTO>> responseList = Get(filter.Client.IncludeDisabled,filter.IdCompany);
 
             response.Message = responseList.Message;
             response.Success = responseList.Success;
@@ -107,7 +107,7 @@ namespace AMLLC.CORE.DATAMANAGER
         /// <param name="IncludeDisabled">Parametro donde se indica si se obtendran los registros deshabilitados</param>
         /// <param name="CompanyId">Parametro donde se indica el número de Id de la compañia a obtener</param>
         /// <returns>Objeto de tipo ResponseDTO con el listado de las compañias obtenidas</returns>
-        private ResponseDTO<List<CatalogsDTO>> Get(bool IncludeDisabled, int? CompanyId, int? ClientId)
+        private ResponseDTO<List<CatalogsDTO>> Get(bool IncludeDisabled, int? CompanyId=null, int? ClientId=null)
         {
             database = DatabaseFactory.CreateDataBase(databaseType, "[CLIENT].[USP_GET_COMPANIES]", IncludeDisabled, CompanyId, ClientId);
             ResponseDTO<List<CatalogsDTO>> response = CommonMapper.CatalogsMapper(database.DataReader);

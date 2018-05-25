@@ -51,6 +51,7 @@
     <Compile Include="Repository\LoginResponseDataManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="IRepository.cs" />
+    <Compile Include="Repository\ProyectRequestRepository.cs" />
     <Compile Include="Repository\UserRequestRepository.cs" />
   </ItemGroup>
   <ItemGroup>

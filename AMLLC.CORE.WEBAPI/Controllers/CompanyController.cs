@@ -74,7 +74,7 @@ namespace AMLLC.CORE.WEBAPI.Controllers
 
         [HttpPost]
         [Route("Add")]
-        public ResponseDTO<int> AddCompany(RequestDTO<CatalogsDTO> request)
+        public ResponseDTO<int> Add(RequestDTO<CatalogsDTO> request)
         {
             var response = new ResponseDTO<int>();
             try
@@ -103,7 +103,7 @@ namespace AMLLC.CORE.WEBAPI.Controllers
         /// <returns>Número de registros afectados</returns>
         [HttpPost]
         [Route("Update")]
-        public ResponseDTO<int> UpdateCompany(RequestDTO<CatalogsDTO> request)
+        public ResponseDTO<int> Update(RequestDTO<CatalogsDTO> request)
         {
             var response = new ResponseDTO<int>();
             try
