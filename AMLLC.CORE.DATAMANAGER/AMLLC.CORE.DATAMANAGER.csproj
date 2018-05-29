@@ -43,11 +43,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Mapper\CommonMapper.cs" />
+    <Compile Include="Mapper\LocationMapper.cs" />
     <Compile Include="Mapper\LoginResponseMapper.cs" />
     <Compile Include="Mapper\RoleMapper.cs" />
     <Compile Include="Mapper\UserRequestMapper.cs" />
     <Compile Include="Repository\ClientRequestRepository.cs" />
     <Compile Include="Repository\CompanyRequestRepository.cs" />
+    <Compile Include="Repository\LocationRequestRepository.cs" />
     <Compile Include="Repository\LoginResponseDataManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="IRepository.cs" />

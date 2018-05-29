@@ -46,7 +46,7 @@
     <Compile Include="RequestFilter\RequestProyectDTO.cs" />
     <Compile Include="RequestFilter\RequestCompanyClientsDTO.cs" />
     <Compile Include="RequestFilter\RequestLocationSupervisorsDTO.cs" />
-    <Compile Include="RequestFilter\RequestProjectLocationsDTO.cs" />
+    <Compile Include="RequestFilter\RequestLocationsDTO.cs" />
     <Compile Include="DB\CatalogsDTO.cs" />
     <Compile Include="DB\InfoDTO.cs" />
     <Compile Include="DB\LocationDTO.cs" />

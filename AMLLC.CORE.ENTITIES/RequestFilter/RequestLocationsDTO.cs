@@ -3,7 +3,7 @@
 namespace AMLLC.CORE.ENTITIES.Catalog
 {
     [DataContract]
-    public class RequestProjectLocationsDTO
+    public class RequestLocationsDTO
     {
         [DataMember]
         public int IdProject { get; set; }
