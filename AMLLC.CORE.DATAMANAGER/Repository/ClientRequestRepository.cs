@@ -109,7 +109,7 @@ namespace AMLLC.CORE.DATAMANAGER
         /// <returns>Objeto de tipo ResponseDTO con el listado de las compañias obtenidas</returns>
         private ResponseDTO<List<CatalogsDTO>> Get(bool IncludeDisabled, int? CompanyId=null, int? ClientId=null)
         {
-            database = DatabaseFactory.CreateDataBase(databaseType, "[CLIENT].[USP_GET_COMPANIES]", IncludeDisabled, CompanyId, ClientId);
+            database = DatabaseFactory.CreateDataBase(databaseType, "[CLIENT].[USP_GET_CLIENTS]", IncludeDisabled, CompanyId, ClientId);
             ResponseDTO<List<CatalogsDTO>> response = CommonMapper.CatalogsMapper(database.DataReader);
             database.Connection.Close();
 

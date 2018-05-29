@@ -24,7 +24,8 @@ namespace AMLLC.CORE.WEBAPI
             builder.RegisterType<ClientRequestRepository>().AsImplementedInterfaces().InstancePerApiRequest();
             builder.RegisterType<ProyectRequestRepository>().AsImplementedInterfaces().InstancePerApiRequest();
             builder.RegisterType<LocationRequestRepository>().AsImplementedInterfaces().InstancePerApiRequest();
-
+            builder.RegisterType<RoleRequestRepository>().AsImplementedInterfaces().InstancePerApiRequest();
+            
             var container = builder.Build();
             var resolver = new AutofacWebApiDependencyResolver(container);
             GlobalConfiguration.Configuration.DependencyResolver = resolver;
