@@ -58,7 +58,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RequestFilter\RequestCatalogDTO.cs" />
     <Compile Include="RequestDTO.cs" />
+    <Compile Include="RequestFilter\RequestSupervisorDTO.cs" />
     <Compile Include="ResponseDTO.cs" />
+    <Compile Include="User\UserLocationDTO.cs" />
     <Compile Include="User\UserRequestDTO.cs" />
   </ItemGroup>
   <ItemGroup>

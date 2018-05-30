@@ -48,7 +48,7 @@ namespace AMLLC.CORE.DATAMANAGER
         public ResponseDTO<IEnumerable<UserRequestDTO>> GetAll(bool filter)
         {
             ResponseDTO<IEnumerable<UserRequestDTO>> response = new ResponseDTO<IEnumerable<UserRequestDTO>>();
-            ResponseDTO<List<UserRequestDTO>> responseList = Get(filter, null);
+            ResponseDTO<List<UserRequestDTO>> responseList = Get(filter);
 
             if (responseList.Success)
                 response.Result = responseList.Result.AsEnumerable();
@@ -83,7 +83,7 @@ namespace AMLLC.CORE.DATAMANAGER
         }
 
 
-        private ResponseDTO<List<UserRequestDTO>> Get(bool IncludeDisabled,int? UserId)
+        private ResponseDTO<List<UserRequestDTO>> Get(bool IncludeDisabled,int? UserId=null)
         {
              
             database = DatabaseFactory.CreateDataBase(databaseType, "[USER].[USP_GET_INFOUSER]", IncludeDisabled, UserId);

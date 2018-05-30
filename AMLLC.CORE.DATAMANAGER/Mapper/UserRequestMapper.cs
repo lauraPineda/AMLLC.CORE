@@ -16,7 +16,7 @@ namespace AMLLC.CORE.DATAMANAGER.Mapper
         public static ResponseDTO<List<UserRequestDTO>> MapperLoginDTO(DbDataReader DbDataReader)
         {
             ResponseDTO<List<UserRequestDTO>> response = new ResponseDTO<List<UserRequestDTO>>();
-            response.Result= new List<UserRequestDTO>();
+            response.Result = new List<UserRequestDTO>();
             response.Success = true;
 
             if (DbDataReader.HasRows)
@@ -38,6 +38,48 @@ namespace AMLLC.CORE.DATAMANAGER.Mapper
                             LastName = Helper.GetString(DbDataReader, "LastName"),
                             Telephone = Helper.GetString(DbDataReader, "Telephone"),
                             HasTelephone = Helper.GetBoolean(DbDataReader, "HasTelephone"),
+                        }
+                    });
+                }
+            }
+            else
+            {
+                response.Success = false;
+                response.Message = "Username or Password incorrect.";
+
+            }
+            return response;
+
+        }
+
+        public static ResponseDTO<List<UserLocationDTO>> MapperInfoUserRoleDTO(DbDataReader DbDataReader)
+        {
+            ResponseDTO<List<UserLocationDTO>> response = new ResponseDTO<List<UserLocationDTO>>();
+            response.Result = new List<UserLocationDTO>();
+            response.Success = true;
+
+            if (DbDataReader.HasRows)
+            {
+                while (DbDataReader.Read())
+                {
+                    response.Result.Add(new UserLocationDTO
+                    {
+                        User = new UserDTO
+                        {
+                            IdUser = Helper.GetUInt32(DbDataReader, "IdUser"),
+                            Enabled = Helper.GetBoolean(DbDataReader, "Enabled")
+                        },
+                        Info = new InfoDTO
+                        {
+
+                            Name = Helper.GetString(DbDataReader, "Name"),
+                            LastName = Helper.GetString(DbDataReader, "LastName")
+                        },
+                        Role = new RoleDTO
+                        {
+                            IdRole = Helper.GetUInt16(DbDataReader, "IdRole"),
+                            Name = Helper.GetString(DbDataReader, "Role"),
+
                         }
                     });
                 }

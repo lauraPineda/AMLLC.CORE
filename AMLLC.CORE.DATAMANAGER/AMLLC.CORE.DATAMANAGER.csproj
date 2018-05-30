@@ -55,6 +55,7 @@
     <Compile Include="IRepository.cs" />
     <Compile Include="Repository\ProyectRequestRepository.cs" />
     <Compile Include="Repository\RoleRequestRepository.cs" />
+    <Compile Include="Repository\UserLocationRequestRepository.cs" />
     <Compile Include="Repository\UserRequestRepository.cs" />
   </ItemGroup>
   <ItemGroup>
