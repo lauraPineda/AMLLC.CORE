@@ -28,7 +28,7 @@ namespace AMLLC.CORE.SHARED
         private ExceptionHandler()
         {
             string exePath = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
-            _StreamWriter = new StreamWriter(Path.Combine(exePath, "ExceptionLog.txt"));
+            _StreamWriter = new StreamWriter(Path.Combine(exePath, Helper.GetLogNameTxt()));
         }
 
         public void WriteExceptionLog(Exception ex)

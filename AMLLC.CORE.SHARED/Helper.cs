@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Data.Common;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Configuration;
 
 namespace AMLLC.CORE.SHARED
 {
@@ -13,7 +14,7 @@ namespace AMLLC.CORE.SHARED
 
         public const int INVALID_IDENTIFIERNUMBER = 0;
 
-        public static object ConfigurationManager { get; private set; }
+        public static string GetLogNameTxt() { return ConfigurationManager.AppSettings["LogNameTxt"].ToString(); }
 
         #endregion
 
